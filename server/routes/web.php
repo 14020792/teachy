@@ -10,7 +10,10 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::group(['middleware' => []], function() {
+    Route::post('/register', 'AuthenticateController@register');
+    Route::post('/login', 'AuthenticateController@login');
+});
+Route::group(['middleware' => ['jwt.auth']], function() {
 
-Route::get('/', function () {
-    return view('welcome');
 });
