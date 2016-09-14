@@ -30,6 +30,7 @@
 #Server side
 
 - Follow https://laravel.com/docs/5.3
+- Source sql file in /sql
 
 #Client side
 
