@@ -4,10 +4,10 @@
  * @ngdoc function
  * @name clientApp.controller:MainCtrl
  * @description
- * # MainCtrl
+ * # HeaderCtrl
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, headerService) {
-    headerService.change('home');
+  .controller('HeaderCtrl', function($scope, headerService){
+    $scope.info = headerService;
   });
