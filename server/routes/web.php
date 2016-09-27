@@ -15,5 +15,6 @@ Route::group(['middleware' => []], function() {
     Route::post('/login', 'AuthenticateController@login');
 });
 Route::group(['middleware' => ['jwt.auth']], function() {
-
+    Route::resource('assessments', 'AssessmentController');
+    Route::resource('subjects', 'SubjectController');
 });

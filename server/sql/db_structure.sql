@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `criterion`(
 ) ENGINE=InnoDB CHARACTER SET=utf8;
 
 CREATE TABLE IF NOT EXISTS `assessment`(
-        id int unsigned    PRIMARY KEY AUTO_INCREMENT,
+	id int unsigned    PRIMARY KEY AUTO_INCREMENT,
 	ins_sub_id int unsigned NOT NULL,
 	criterion_id int unsigned NOT NULL,
 	user_id int unsigned NOT NULL,
