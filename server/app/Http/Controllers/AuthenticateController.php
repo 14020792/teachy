@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use Reply;
+use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthenticateController extends Controller
 {
@@ -69,6 +72,73 @@ class AuthenticateController extends Controller
         $user->save();
 
         return Reply::reply(1, 'register_success', null, 200);
+    }
+
+    /**
+     * @SWG\Post(path="/login",
+     *   tags={"User"},
+     *   summary="Login",
+     *   description="",
+     *   operationId="index",
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
+     *     name="data",
+     *     in="body",
+     *     required=true,
+     *     @SWG\Schema(ref="#/definitions/AuthenticateLogin"),
+     *   ) ,
+     *   @SWG\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @SWG\Schema(type="string"),
+     *     @SWG\Header(
+     *       header="X-Rate-Limit",
+     *       type="integer",
+     *       format="int32",
+     *       description=""
+     *     ),
+     *     @SWG\Header(
+     *       header="X-Expires-After",
+     *       type="string",
+     *       format="date-time",
+     *       description="date in UTC when token expires"
+     *     )
+     *   ),
+     *   @SWG\Response(response=400, description="")
+     * )
+     */
+    public function login(Request $request) {
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'username' => 'required|min:4',
+            'password' => 'required|min:6'
+        ]);
+
+        if ($validator->fails()) {
+            return Reply::reply(0, 'login_failed', $validator->messages(), 400);
+        }
+
+        $user = User::where('username', $input['username'])->first();
+
+        if (!$user) {
+            return Reply::reply(0, 'invalid_username', null, 400);
+        }
+
+        if (!Hash::check($input['password'], $user->password)) {
+            return Reply::reply(0, 'incorrect_password', null, 400);
+        }
+
+        try {
+            $claims = ['user' => $user->toArray()];
+            if (!$token = JWTAuth::fromUser($user, $claims)) {
+                return Reply::reply(0, 'invalid_credentials', null, 401);
+            }
+        } catch (JWTException $e) {
+            return Reply::reply(0, 'token_failed', null, 500);
+        }
+
+        return Reply::reply(1, 'login_success', ['token' => $token], 200);
+
     }
 
 }
