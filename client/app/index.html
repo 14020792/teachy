@@ -31,29 +31,28 @@
 
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
-              <!-- <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-              <span class="icon-bar"></span> -->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
           </button>
 
           <a class="navbar-brand" href="#/">
             <img class="img-responsive img-circle" width='50' height='50' src="favicon.ico">
           </a>
         </div>
-
-        <ul class="nav navbar-nav pull-right">
-          <li ng-class="{'active':info.selectedTab === 'home'}">
-            <a href="#/"><span class="fa fa-home"></span>Home</a>
-          </li>
-          <li ng-class="{'active':info.selectedTab === 'rate'}">
-            <a href="#/"><span class="fa fa-pencil"></span>Rate!</a>
-          </li>
-          <li ng-class="{'active':info.selectedTab === 'stats'}">
-            <a href="#/stats"><span class="fa fa-book"></span>Statistics</a>
-          </li>
-
-
-        </ul>
+        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-class="{'active':info.selectedTab === 'home'}">
+              <a href="#/"><span class="fa fa-home"></span>&nbsp Home</a>
+            </li>
+            <li ng-class="{'active':info.selectedTab === 'rate'}">
+              <a href="#/"><span class="fa fa-pencil"></span> &nbsp Rate!</a>
+            </li>
+            <li ng-class="{'active':info.selectedTab === 'stats'}">
+              <a href="#/stats"><span class="fa fa-bar-chart"></span>&nbsp Statistics</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

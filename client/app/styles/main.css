@@ -133,9 +133,9 @@ a:focus {
 }
 
 /* Image Opacity */
-.grid img {
+img {
     opacity: .7;
 }
-.grid img:hover {
+img:hover {
     opacity: 1;
 }
