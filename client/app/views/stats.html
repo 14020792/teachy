@@ -1,5 +1,4 @@
 <div class="row">
-
   <div class="col-md-3">
     <p class="lead">Pick a subject</p>
     <select class="form-control" ng-model="selectedSubject">
@@ -9,58 +8,26 @@
     <br/>
     <p class="lead">Instructors list</p>
     <div class="list-group">
-      <a ng-repeat="instructor in instructors|filter:isSeletedFilter" class="list-group-item">
+      <a ng-repeat="instructor in instructors|filter:isSelectedFilter" class="list-group-item" ng-class="{'active':selectedInstructor.id === instructor.id}" ng-click="selectedInstructor.id = instructor.id">
         {{instructor.name}}
       </a>
     </div>
   </div>
-
   <div class="col-md-9">
-
-    <div class="row">
-
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          <img src="images/placeholder.png" alt="">
-          <h4 class="pull-right">60</h4>
-          <h4><a href="#">Bulldog</a></h4>
+    <div class="panel panel-default" ng-show="selectedInstructor.id != -1">
+      <div class="panel-heading">
+        <h3 class="panel-title">Instructor Details</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <img class="img-thumbnail img-circle" ng-src="{{instructors[selectedInstructor.id].imgUrl}}">
+          </div>
+          <div class="col-md-8">
+            <h1>{{instructors[selectedInstructor.id].name}}</h1>
+          </div>
         </div>
       </div>
-
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          <img src="images/placeholder.png" alt="">
-          <h4 class="pull-right">79</h4>
-          <h4><a href="#">RTZ</a></h4>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          <img src="images/placeholder.png" alt="">
-          <h4 class="pull-right">59</h4>
-          <h4><a href="#">EE</a></h4>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          <img src="images/placeholder.png" alt="">
-          <h4 class="pull-right">1</h4>
-          <h4><a href="#">Miracle</a></h4>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          <img src="images/placeholder.png" alt="">
-          <h4 class="pull-right">100</h4>
-          <h4><a href="#">Dat Chan</a></h4>
-        </div>
-      </div>
-
     </div>
-
   </div>
-
 </div>
