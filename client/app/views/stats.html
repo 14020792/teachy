@@ -3,12 +3,12 @@
     <p class="lead">Pick a subject</p>
     <select class="form-control" ng-model="selectedSubject">
       <option value = "" disabled selected hidden>Select or search a subject</option>
-      <option ng-repeat="(name, id) in subjects" value = {{id}}>{{name}}</option>
+      <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option>
     </select>
     <br/>
     <p class="lead">Instructors list</p>
-    <div class="list-group">
-      <a ng-repeat="instructor in instructors|filter:isSelectedFilter" class="list-group-item" ng-class="{'active':selectedInstructor.id === instructor.id}" ng-click="selectedInstructor.id = instructor.id">
+    <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
+      <a ng-repeat="instructor in subject.data" class="list-group-item" ng-class="{'active':selectedInstructor.id === instructor.id}" ng-click="selectedInstructor.id = instructor.id">
         {{instructor.name}}
       </a>
     </div>

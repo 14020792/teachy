@@ -181,9 +181,18 @@ class AssessmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = JWTAuth::parseToken()->authenticate();
+
+        $input = $request->all();
+
+        $assessments = $input['assessments'];
+
+        foreach ($assessments as $assessment) {
+            $a = Assessment::find($assessment['id']);
+            $a->value = $assessment['value'];
+        }
     }
 
     /**
