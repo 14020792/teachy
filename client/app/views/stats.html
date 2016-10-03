@@ -1,30 +1,52 @@
 <div class="row">
   <div class="col-md-3">
     <p class="lead">Pick a subject</p>
-    <select class="form-control" ng-model="selectedSubject">
+    <select class="form-control" ng-model="selectedSubject"
+            ng-options="subjects.indexOf(subject) as subject.name for subject in subjects">
       <option value = "" disabled selected hidden>Select or search a subject</option>
-      <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option>
+      <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
     <p class="lead">Instructors list</p>
-    <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
-      <a ng-repeat="instructor in subject.data" class="list-group-item" ng-class="{'active':selectedInstructor.id === instructor.id}" ng-click="selectedInstructor.id = instructor.id">
-        {{instructor.name}}
+    <!-- <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
+      <a ng-repeat="instructor in subject.data track by $index" class="list-group-item"
+         ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
+         {{instructor.name}}
+      </a>
+    </div> -->
+    <div class="list-group" animate-on-change="selectedSubject">
+      <a ng-repeat="instructor in subjects[selectedSubject].data track by $index"
+         class="list-group-item"
+         ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
+         {{instructor.name}}
       </a>
     </div>
   </div>
   <div class="col-md-9">
-    <div class="panel panel-default" ng-show="selectedInstructor.id != -1">
+    <div class="panel panel-default" ng-show="selectedInstructor != -1">
       <div class="panel-heading">
         <h3 class="panel-title">Instructor Details</h3>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-4">
-            <img class="img-thumbnail img-circle" ng-src="{{instructors[selectedInstructor.id].imgUrl}}">
+          <div class="col-xs-3">
+            <img class="img-thumbnail img-circle" ng-src="{{subjects[selectedSubject].data[selectedInstructor].imgUrl}}">
           </div>
+          <div class="col-xs-9">
+            <h1 style="margin-top: 0px; font-weight:400">
+              {{subjects[selectedSubject].data[selectedInstructor].name}}
+            </h1>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-8">
-            <h1>{{instructors[selectedInstructor.id].name}}</h1>
+            <div ng-repeat="aspect in aspects track by $index">
+
+              <h3>{{aspect}}<span class="pull-right">
+                {{subjects[selectedSubject].data[selectedInstructor].scores[$index]}}/5
+              </span></h3>
+              <uib-progressbar max="5" value="subjects[selectedSubject].data[selectedInstructor].scores[$index]" style="margin-left: 0px;margin-right: 0px"/>
+            </div>
           </div>
         </div>
       </div>

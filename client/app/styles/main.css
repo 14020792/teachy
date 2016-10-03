@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -20,15 +20,27 @@ body {
 
     /*margin-top: 70px;*/
 }
+.panel{
+  transition: all linear 1s;
+}
+.panel.ng-hide{
+  opacity: 0;
+}
+[animate-on-change]{
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  opacity: 1;
+}
+[animate-on-change].changed {
+  opacity: 0;
+}
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
+    font-family: "Lato";
     font-weight: 300;
     color: #333;
 }
-
-
 /* Paragraph & Typographic */
 p {
     line-height: 28px;
@@ -64,7 +76,7 @@ a:focus {
 
 
 /* Bootstrap Modifications */
- hr {
+hr {
     display: block;
     height: 1px;
     border: 0;
@@ -73,7 +85,10 @@ a:focus {
     padding: 0;
 }
 
-
+.progress-bar{
+  background-color: #74cfae;
+  background-image: none;
+}
 .navbar {
 	font-weight: 800;
 	font-size: 14px;

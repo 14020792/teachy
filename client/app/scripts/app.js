@@ -16,7 +16,8 @@ var app = angular.module('clientApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -38,4 +39,16 @@ var app = angular.module('clientApp', [
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .directive('animateOnChange', function($timeout) {
+    return function(scope, element, attr) {
+        scope.$watch(attr.animateOnChange, function(nv,ov) {
+            if (nv!=ov) {
+                element.addClass('changed');
+                $timeout(function() {
+                    element.removeClass('changed');
+                }, 800);
+            }
+        });
+    };
   });
