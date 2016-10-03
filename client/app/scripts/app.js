@@ -31,6 +31,11 @@ var app = angular.module('clientApp', [
         controller: 'StatsCtrl',
         controllerAs: 'stats'
       })
+      .when('/rating', {
+        templateUrl: 'views/rating.html',
+        controller: 'RatingCtrl',
+        controllerAs: 'rating'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -45,8 +45,8 @@
             <li ng-class="{'active':info.selectedTab === 'home'}">
               <a href="#/"><span class="fa fa-home"></span>&nbsp Home</a>
             </li>
-            <li ng-class="{'active':info.selectedTab === 'rate'}">
-              <a href="#/"><span class="fa fa-pencil"></span> &nbsp Rate!</a>
+            <li ng-class="{'active':info.selectedTab === 'rating'}">
+              <a href="#/rating"><span class="fa fa-pencil"></span> &nbsp Rate!</a>
             </li>
             <li ng-class="{'active':info.selectedTab === 'stats'}">
               <a href="#/stats"><span class="fa fa-bar-chart"></span>&nbsp Statistics</a>
@@ -77,12 +77,14 @@
   <script src="bower_components/angular-touch/angular-touch.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
+  <script src="scripts/controllers/rating.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/services/header.js"></script>
   <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/rating.js"></script>
   <script src="scripts/controllers/stats.js"></script>
   <script src="scripts/controllers/header.js"></script>
   <!-- <script src="scripts/utilities.js"></script> -->
