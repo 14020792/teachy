@@ -1,24 +1,85 @@
-<div class="row" id="submit-review">
-    <div class="col-md-12">
-         <form accept-charset="UTF-8" action="" method="post">
-            <input id="hide-stars" name="rating" type="hidden"> 
-                <textarea class="form-control transition" cols="100" id="get-review" name="comment" placeholder="Begin Here..." rows="10"></textarea>
-                
-                <div class="text-left">
-                    <div class="review-stars ratings" data-rating="0">
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                        <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
-                    </div>
-                </div>
-                <div class="text-right">
-                    <button class="btn btn-success btn-lg" type="submit"> 
-                        <span class="glyphicon glyphicon-send"></span> Send
-                    </button> 
-            </div>
-        </form>
+<div class="row">
+  <div class="col-md-3">
+    <p class="lead">Chọn môn học</p>
+    <select class="form-control" ng-model="selectedSubject">
+      <option value = "" disabled selected hidden>Select or search a subject</option>
+      <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option>
+    </select>
+    <br/>
+    <p class="lead">Giảng viên</p>
+    <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
+      <a ng-repeat="instructor in subject.data" class="list-group-item" ng-class="{'active':selectedInstructor.id === instructor.id}" ng-click="selectedInstructor.id = instructor.id">
+        {{instructor.name}}
+      </a>
     </div>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default" ng-show="selectedInstructor.id != -1">
+      <div class="panel-heading">
+        <h3 class="panel-title">Đánh giá</h3>
+      </div>
+      <div class="panel-body">
+            <div class="row" id="submit-review">
+                <div class="col-md-12">
+                    <form accept-charset="UTF-8" action="" method="post">
+                        <input id="hide-stars" name="rating" type="hidden"> 
+                            <!-- one -->
+                            <textarea class="form-control transition" cols="100" id="get-review" name="comment" placeholder="Ứng xử với học sinh" rows="2"></textarea>
+                                
+                            <div class="text-left">
+                                <div class="review-stars ratings" data-rating="0">
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                </div>
+                            </div>
+        
+                            <!-- two -->
+                            <textarea class="form-control transition" cols="100" id="get-review" name="comment" placeholder="Đảm bảo chương trình môn học" rows="2"></textarea>
+                                
+                            <div class="text-left">
+                                <div class="review-stars ratings" data-rating="0">
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                </div>
+                            </div>
+
+                            <!-- three -->
+                            <textarea class="form-control transition" cols="100" id="get-review" name="comment" placeholder="Đảm bảo chương trình môn học" rows="2"></textarea>
+                                
+                            <div class="text-left">
+                                <div class="review-stars ratings" data-rating="0">
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                    <span class="glyphicon .glyphicon-star-empty glyphicon-star-empty"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="text-right">
+                                <button class="btn btn-success btn-lg" type="submit"> 
+                                    <span class="glyphicon glyphicon-send"></span> Send
+                                </button> 
+                            </div>
+                    </form>
+                </div>
+            </div>
+          <div class="col-md-8">
+            <h1>{{instructors[selectedInstructor.id].name}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
        
