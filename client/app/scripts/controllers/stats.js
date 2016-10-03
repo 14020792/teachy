@@ -10,8 +10,12 @@
 angular.module('clientApp')
     .controller('StatsCtrl', function ($scope, headerService) {
         headerService.change('stats');
-        // Lay Json subjects tu dau - phia duoi la sample
-        $scope.selectedInstructor = {id: -1};
+
+        $scope.selectedInstructor = -1;
+        $scope.setInstructor = function(index){
+          $scope.selectedInstructor = index;
+        }
+        $scope.aspects = ["Teaching", "Scoring", "Boobs", "Butt", "Vagina"];
         $scope.subjects = [
             {
                 "name": "Programming",
@@ -19,21 +23,18 @@ angular.module('clientApp')
                 "data": [
                     {
                         name: "Nguyen Hoang Hai",
-                        teach: ["1","2","3"],
-                        imgUrl: "images/img/01.jpg",
-                        id: "0"
+                        scores: [ 1.5, 2.0, 2.0, 4.0, 4.5],
+                        imgUrl: "images/img/01.jpg"
                     },
                     {
                         name: "Tran Trong Dat",
-                        teach: ["1","3"],
-                        imgUrl: "images/img/02.jpg",
-                        id: "1"
+                        scores: [ 2.5, 1.0, 3.0, 1.0, 2.5],
+                        imgUrl: "images/img/02.jpg"
                     },
                     {
                         name: "Nguyen Huu Nhat Minh",
-                        teach: ["1","2"],
-                        imgUrl: "images/img/03.jpg",
-                        id: "2"
+                        scores: [ 4.5, 3.0, 2.0, 1.0, 0.5],
+                        imgUrl: "images/img/03.jpg"
                     }
                 ]
             },
@@ -43,21 +44,18 @@ angular.module('clientApp')
                 data : [
                     {
                         name: "Nguyen Huu Nhat Minh",
-                        teach: ["1", "2"],
-                        imgUrl: "images/img/03.jpg",
-                        id: "2"
+                        scores: [ 3.5, 3.0, 3.0, 1.0, 4.5],
+                        imgUrl: "images/img/03.jpg"
                     },
                     {
                         name: "Cao Xuan Hung",
-                        teach: ["1", "2"],
-                        imgUrl: "images/img/04.jpg",
-                        id: "3"
+                        scores: [ 2.5, 3.0, 1.0, 4.0, 0.5],
+                        imgUrl: "images/img/04.jpg"
                     },
                     {
                         name: "Nguyen Trong Dong",
-                        teach: ["3", "1"],
-                        imgUrl: "images/img/05.jpg",
-                        id: "4"
+                        scores: [ 1.5, 2.0, 2.0, 4.0, 4.5],
+                        imgUrl: "images/img/05.jpg"
                     }
                 ]
             },
@@ -67,44 +65,27 @@ angular.module('clientApp')
                 data: [
                     {
                         name: "Cao Xuan Hung",
-                        teach: ["1", "2"],
-                        imgUrl: "images/img/04.jpg",
-                        id: "3"
+                        scores: [ 2.5, 3.0, 4.0, 1.0, 0.5],
+                        imgUrl: "images/img/04.jpg"
                     },
                     {
                         name: "Nguyen Trong Dong",
-                        teach: ["3", "1"],
-                        imgUrl: "images/img/05.jpg",
-                        id: "4"
+                        scores: [ 1.5, 2.0, 3.0, 4.0, 4.5],
+                        imgUrl: "images/img/05.jpg"
                     },
                     {
                         name: "Nguyen Hoang Hai",
-                        teach: ["1", "2", "3"],
-                        imgUrl: "images/img/01.jpg",
-                        id: "0"
+                        scores: [ 4.5, 2.0, 1.0, 3.0, 2.5],
+                        imgUrl: "images/img/01.jpg"
                     },
                     {
                         name: "Tran Trong Dat",
-                        teach: ["1", "3"],
-                        imgUrl: "images/img/02.jpg",
-                        id: "1"
+                        scores: [ 1.5, 2.0, 2.0, 4.0, 1.5],
+                        imgUrl: "images/img/02.jpg"
                     }
                 ]
 
             }
         ];
-        /*
-         $scope.isSelectedFilter = function(instructor){
-         var res = false;
-         for(var i=0; i<instructor.teach.length; i++)
-         if (instructor.teach[i] == $scope.selectedSubject)
-         res = true;
-         if ($scope.selectedSubject == null) return true;
-         // for(var subjectID in instructor.teach)
-         //   if (subjectID == $scope.selectedSubject)
-         //     res = true;
-         return res;
-         };
-         */
 
     });
