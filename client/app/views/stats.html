@@ -1,28 +1,28 @@
 <div class="row">
-  <div class="col-md-3">
-    <p class="lead">Pick a subject</p>
+  <div class="col-xs-3">
+    <p class="lead">Select Subject</p>
     <select class="form-control" ng-model="selectedSubject"
             ng-options="subjects.indexOf(subject) as subject.name for subject in subjects">
       <option value = "" disabled selected hidden>Select or search a subject</option>
       <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
-    <p class="lead">Instructors list</p>
-    <!-- <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
+    <p class="lead">Instructors</p>
+    <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
       <a ng-repeat="instructor in subject.data track by $index" class="list-group-item"
          ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
          {{instructor.name}}
       </a>
-    </div> -->
-    <div class="list-group" animate-on-change="selectedSubject">
+    </div>
+    <!-- <div class="list-group">
       <a ng-repeat="instructor in subjects[selectedSubject].data track by $index"
          class="list-group-item"
          ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
          {{instructor.name}}
       </a>
-    </div>
+    </div> -->
   </div>
-  <div class="col-md-9">
+  <div class="col-xs-9">
     <div class="panel panel-default" ng-show="selectedInstructor != -1">
       <div class="panel-heading">
         <h3 class="panel-title">Instructor Details</h3>
@@ -38,10 +38,9 @@
             </h1>
           </div>
         </div>
+        <hr/>
         <div class="row">
-          <div class="col-md-8">
-            <div ng-repeat="aspect in aspects track by $index">
-
+            <div class="col-xs-6" ng-repeat="aspect in aspects track by $index">
               <h3>{{aspect}}<span class="pull-right">
                 {{subjects[selectedSubject].data[selectedInstructor].scores[$index]}}/5
               </span></h3>

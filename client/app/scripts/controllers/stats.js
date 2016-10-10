@@ -15,7 +15,8 @@ angular.module('clientApp')
         $scope.setInstructor = function(index){
           $scope.selectedInstructor = index;
         }
-        $scope.aspects = ["Teaching", "Scoring", "Boobs", "Butt", "Vagina"];
+        $scope.aspects = ["Teaching", "Scoring", "Preparation", "Speed", "Humor"];
+        
         $scope.subjects = [
             {
                 "name": "Programming",

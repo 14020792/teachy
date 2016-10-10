@@ -21,17 +21,9 @@ body {
     /*margin-top: 70px;*/
 }
 .panel{
-  transition: all linear 1s;
+  transition: all linear 0.5s;
 }
 .panel.ng-hide{
-  opacity: 0;
-}
-[animate-on-change]{
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  opacity: 1;
-}
-[animate-on-change].changed {
   opacity: 0;
 }
 
@@ -74,7 +66,27 @@ a:focus {
     outline: 0;
 }
 
-
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.star-rating .star{
+  padding: 1px;
+  color: #ddd;
+  font-size: 30px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.star-rating .star.filled{
+  color: #74cfae;
+}
+.star-rating .star:active,
+.star-rating .star-filled:active{
+  outline: 0px solid;
+}
 /* Bootstrap Modifications */
 hr {
     display: block;
@@ -127,6 +139,10 @@ hr {
 	border: 5px solid transparent;
 	border-radius: 0px;
 }
+.btn:hover{
+  background-color: #74cfae;
+  color: white;
+}
 
 .lead {
 	letter-spacing: 1px;
@@ -173,22 +189,4 @@ img {
 }
 img:hover {
     opacity: 1;
-}
-
-body{font-family:Montserrat;}
- .transition {
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    transition: height 0.5s;
-}
-.well{
-      border-radius:5px;
-      box-shadow:0px 0px 5px  #777;
-      padding:20px;
-}
-
-.review-stars
-{
-    margin: 10px 0;
-    font-size:25px;
 }
