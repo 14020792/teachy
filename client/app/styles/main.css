@@ -190,3 +190,7 @@ img {
 img:hover {
     opacity: 1;
 }
+
+.btn-login {
+  border: none;
+}

@@ -8,6 +8,14 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('HeaderCtrl', function($scope, headerService){
+  .controller('HeaderCtrl', function($scope, $uibModal, headerService) {
     $scope.info = headerService;
+    $scope.open = function () {
+      $uibModal.open({
+        controller: 'ModalInstanceCtrl as modalInstance',
+        templateUrl: 'views/login.html'
+      });
+    };
+    $scope.message = "lol";
   });
+
