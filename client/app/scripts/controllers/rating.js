@@ -13,8 +13,9 @@ angular.module('clientApp')
 
     $scope.selectedInstructor = -1;
     $scope.setInstructor = function(index){
-      $scope.selectedInstructor = index;
+        $scope.selectedInstructor = index;
     }
+
     $scope.rating1 = {c:5};
     $scope.aspects = ["Teaching", "Scoring", "Preparation", "Speed", "Humor"];
     $scope.curRate = { value: [1, 2, 3, 4, 5]};
@@ -88,5 +89,17 @@ angular.module('clientApp')
             ]
 
         }
+
     ];
+
+    $scope.submitRatingform = function() {
+        //selectedInstructor;
+        //selectedSubject
+
+        //var subjectId = $scope.selectedSubject;
+        //var instructorId = $scope.selectedInstructor;
+        //$scope.subjects[subjectId]["data"][instructorId]["score"] = $scope.curRate;
+        alert("submit successfully!");
+        console.log("yes");
+    }
   });

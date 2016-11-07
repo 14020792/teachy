@@ -12,26 +12,27 @@
         {{instructor.name}}
       </a>
     </div>
-    <!-- <div class="list-group">
-      <a ng-repeat="instructor in subjects[selectedSubject].data track by $index"
-         class="list-group-item"
-         ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
-         {{instructor.name}}
-      </a>
-    </div> -->
   </div>
-  <div class="col-xs-9">
-    <div class="panel panel-default" ng-show="selectedInstructor != -1">
-      <div class="panel-heading">
-        <h3 class="panel-title">Instructor Details</h3>
-      </div>
-      <div class="panel-body">
-        <div class="col-xs-6" ng-repeat="aspect in aspects track by $index">
-          <strong>{{aspect}}</strong>
-          <div star-rating ng-model="curRate.value[$index]" max="5"></div>
-          <p>Curvalue: <span>{{curRate.value[$index]}}</span></p>
+  
+  <form method="POST" ng-submit="submitRatingform(ratingform)" ng-model="ratingform">
+    <div class="col-xs-9">
+      <div class="panel panel-default" ng-show="selectedInstructor != -1">
+        <div class="panel-heading">
+          <h3 class="panel-title">Rating dashboard</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-xs-6" ng-repeat="aspect in aspects track by $index">
+            <strong>{{aspect}}</strong>
+            <div star-rating ng-model="curRate.value[$index]" max="5"></div>
+            <p>Curvalue: <span>{{curRate.value[$index]}}</span></p>
+          </div>
+        </div>
+        <div class="footer footer-submit">
+          <button type="submit" class="btn btn-success btn-submit">
+            <i class="ace-icon fa fa-check"></i>&nbsp;submit 
+          </button>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
