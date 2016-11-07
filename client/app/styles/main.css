@@ -204,3 +204,6 @@ img:hover {
   background: #e4e9ee;
   display: block;
 }
+.btn-login {
+  border: none;
+}
