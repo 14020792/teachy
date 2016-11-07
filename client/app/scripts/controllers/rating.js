@@ -96,9 +96,10 @@ angular.module('clientApp')
         //selectedInstructor;
         //selectedSubject
 
-        var subjectId = $scope.selectedSubject;
-        var instructorId = $scope.selectedInstructor;
-        $scope.subjects[subjectId]["data"][instructorId]["score"] = $scope.curRate;
-        console.log($scope.subjects);
+        //var subjectId = $scope.selectedSubject;
+        //var instructorId = $scope.selectedInstructor;
+        //$scope.subjects[subjectId]["data"][instructorId]["score"] = $scope.curRate;
+        alert("submit successfully!");
+        console.log("yes");
     }
   });
