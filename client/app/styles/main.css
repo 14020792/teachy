@@ -190,3 +190,17 @@ img {
 img:hover {
     opacity: 1;
 }
+
+.btn-submit {
+  font-size: 16px;
+  border: 0px;
+  background: #74cfae !important;
+}
+.footer-submit {
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: right;
+  background: #e4e9ee;
+  display: block;
+}
