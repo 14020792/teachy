@@ -14,6 +14,6 @@ angular.module('clientApp')
     headerService.selectedTab = 'home';
     headerService.change = function(value){
       headerService.selectedTab = value;
-    }
+    };
     return headerService;
   });

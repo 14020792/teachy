@@ -55,7 +55,8 @@
           </ul>
         </div>
         <div class="col-md-6" style="text-align: right">
-          <button class="btn btn-default btn-login" ng-click="open()"><span class="fa fa-sign-in">&nbsp Login<span></span></button>
+          <button ng-if="!isAuthenticated" class="btn btn-default btn-login" ng-click="open()"><span class="fa fa-sign-in">&nbsp Login</span></button>
+          <button ng-if="isAuthenticated" class="btn btn-default" ng-click="logout()"><span class="fa fa-sign-in">&nbsp Logout</span></button>
         </div>
       </div>
     </div>
@@ -80,6 +81,7 @@
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
 <!-- endbower -->
 
 <!-- endbuild -->

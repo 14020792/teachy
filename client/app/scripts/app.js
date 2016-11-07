@@ -9,6 +9,7 @@
  * Main module of the application.
  */
 var app = angular.module('clientApp', [
+    'angular-jwt',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -19,7 +20,10 @@ var app = angular.module('clientApp', [
     'ngTouch',
     'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
+  .constant('config', {
+    serverUrl : 'http://localhost:8080'
+  })
+  .config(function ($routeProvider, $httpProvider, jwtOptionsProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -39,6 +43,20 @@ var app = angular.module('clientApp', [
       .otherwise({
         redirectTo: '/'
       });
+
+    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('teachyToken');
+      },
+      whiteListedDomains: ['localhost'],
+      unauthenticatedRedirectPath: '/'
+    });
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  })
+  .run(function(authManager) {
+    authManager.checkAuthOnRefresh();
+    authManager.redirectWhenUnauthenticated();
   })
   .directive('animateOnChange', function($timeout) {
     return function(scope, element, attr) {

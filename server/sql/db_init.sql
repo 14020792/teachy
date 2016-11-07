@@ -20,6 +20,7 @@ INSERT INTO `criterion`(id, text) VALUES
 (1, 'Cách chấm điểm')
 , (2, 'Cách dạy');
 
+//pass : khongnho
 INSERT INTO `user`(id, username, password, email, name, code)
 VALUES (1, 'hainh', '$2y$10$SLC3mK5NWIDc6JK8RqI1euBluSPFIti35q/B27272g0OmrictX7kO', '14020792@vnu.edu.vn', 'Nguyễn Hoàng Hải', '14020792');
 
