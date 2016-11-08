@@ -32,7 +32,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: "Lato";
     font-weight: 300;
-    color: #333;
+    /*color: #333;*/
 }
 /* Paragraph & Typographic */
 p {
@@ -137,7 +137,7 @@ hr {
 	padding: 10px 30px;
 	margin-bottom: 0;
 	font-size: 18px;
-	border: 5px solid transparent;
+	border: 0px solid transparent;
 	border-radius: 0px;
 }
 .btn:hover{
@@ -194,7 +194,7 @@ img:hover {
 
 .btn-submit {
   font-size: 16px;
-  border: 0px;
+  /*border: 0px;*/
   background: #74cfae !important;
 }
 .footer-submit {
@@ -205,8 +205,15 @@ img:hover {
   background: #e4e9ee;
   display: block;
 }
+
 .btn-login {
   border: none;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+    box-shadow: none;
 }
 
 /****** LOGIN MODAL ******/
@@ -244,7 +251,6 @@ img:hover {
   background: #fff;
   border: 1px solid #d9d9d9;
   border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -265,13 +271,9 @@ img:hover {
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
-  /* border-radius: 3px; */
-  /* -webkit-user-select: none;
-    user-select: none; */
 }
 
 .loginmodal-submit {
-  /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1);
@@ -279,15 +281,12 @@ img:hover {
   padding: 17px 0px;
   font-family: roboto;
   font-size: 14px;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
 .loginmodal-submit:hover {
-  /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #357ae8;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
 .loginmodal-container a {
