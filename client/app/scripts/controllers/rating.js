@@ -8,98 +8,68 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('RatingCtrl', function ($scope, headerService) {
+  .controller('RatingCtrl', function ($http, $scope, headerService,
+                                      subjectService, criteriaService, ratingService) {
     headerService.change('rating');
 
     $scope.selectedInstructor = -1;
+    $scope.selectedSubject = -1;
+    $scope.testVar = 3;
     $scope.setInstructor = function(index){
-        $scope.selectedInstructor = index;
-    }
+      $scope.selectedInstructor = index;
+      $scope.rating = {
+        assessments : [1,2,3]
+      };
+      //$scope.rating = {};
+      //for (var ins_sub_id in $scope.assessments) {
+      //  var assessment = $scope.assessments[ins_sub_id];
+      //  if (assessment.subject_id == $scope.subject.id
+      //    && assessment.instructor_id == $scope.subject.instructors[$scope.selectedInstructor].id) {
+      //    $scope.rating.ins_sub_id = ins_sub_id;
+      //    $scope.rating.assessments = [];
+      //    for (var i in $scope.criteria) {
+      //      var criterion = $scope.criteria[i];
+      //      if (criterion.id in assessment.assessments)
+      //        $scope.rating.assessments.push(assessment.assessments[criterion.id].value);
+      //        //scope.rating.assessments[criterion.id] = assessment.assessments[criterion.id].value;
+      //      else
+      //        $scope.rating.assessments.push(0);
+      //        //$scope.rating.assessments[criterion.id] = 0;
+      //
+      //    }
+      //
+      //
+      //  }
+      //}
+      console.log($scope.rating);
+    };
 
-    $scope.rating1 = {c:5};
-    $scope.aspects = ["Teaching", "Scoring", "Preparation", "Speed", "Humor"];
-    $scope.curRate = { value: [1, 2, 3, 4, 5]};
-    $scope.subjects = [
-        {
-            "name": "Programming",
-            id :"1",
-            "data": [
-                {
-                    name: "Nguyen Hoang Hai",
-                    scores: [ 1.5, 2.0, 2.0, 4.0, 4.5],
-                    imgUrl: "images/img/01.jpg"
-                },
-                {
-                    name: "Tran Trong Dat",
-                    scores: [ 2.5, 1.0, 3.0, 1.0, 2.5],
-                    imgUrl: "images/img/02.jpg"
-                },
-                {
-                    name: "Nguyen Huu Nhat Minh",
-                    scores: [ 4.5, 3.0, 2.0, 1.0, 0.5],
-                    imgUrl: "images/img/03.jpg"
-                }
-            ]
-        },
-        {
-            id: "2",
-            name : "Software Engineering",
-            data : [
-                {
-                    name: "Nguyen Huu Nhat Minh",
-                    scores: [ 3.5, 3.0, 3.0, 1.0, 4.5],
-                    imgUrl: "images/img/03.jpg"
-                },
-                {
-                    name: "Cao Xuan Hung",
-                    scores: [ 2.5, 3.0, 1.0, 4.0, 0.5],
-                    imgUrl: "images/img/04.jpg"
-                },
-                {
-                    name: "Nguyen Trong Dong",
-                    scores: [ 1.5, 2.0, 2.0, 4.0, 4.5],
-                    imgUrl: "images/img/05.jpg"
-                }
-            ]
-        },
-        {
-            name: "Signals and Systems",
-            id: "3",
-            data: [
-                {
-                    name: "Cao Xuan Hung",
-                    scores: [ 2.5, 3.0, 4.0, 1.0, 0.5],
-                    imgUrl: "images/img/04.jpg"
-                },
-                {
-                    name: "Nguyen Trong Dong",
-                    scores: [ 1.5, 2.0, 3.0, 4.0, 4.5],
-                    imgUrl: "images/img/05.jpg"
-                },
-                {
-                    name: "Nguyen Hoang Hai",
-                    scores: [ 4.5, 2.0, 1.0, 3.0, 2.5],
-                    imgUrl: "images/img/01.jpg"
-                },
-                {
-                    name: "Tran Trong Dat",
-                    scores: [ 1.5, 2.0, 2.0, 4.0, 1.5],
-                    imgUrl: "images/img/02.jpg"
-                }
-            ]
+    $scope.errorMsg = null;
+    subjectService.load().then(function(d) {
+      $scope.subjects = d.data;
+      if (d.status == 0) {
+        $scope.errorMsg = d.msg;
+      }
+    });
 
-        }
+    $scope.changeSubject = function() {
+      $scope.selectedInstructor = -1;
+      subjectService.loadSubject($scope.subjects[$scope.selectedSubject].id)
+        .then(function(d) {
+          $scope.subject = d.data;
+          if (d.status == 0) {
+            $scope.errorMsg = d.msg;
+          }
+        });
+    };
 
-    ];
+    criteriaService.load().then(function(d) {
+      $scope.criteria = d;
+      ratingService.load().then(function(d) {
+        $scope.assessments = d;
+      });
+    });
 
-    $scope.submitRatingform = function() {
-        //selectedInstructor;
-        //selectedSubject
 
-        //var subjectId = $scope.selectedSubject;
-        //var instructorId = $scope.selectedInstructor;
-        //$scope.subjects[subjectId]["data"][instructorId]["score"] = $scope.curRate;
-        alert("submit successfully!");
-        console.log("yes");
-    }
+
   });

@@ -13,8 +13,9 @@
 Route::group(['middleware' => []], function() {
     Route::post('/register', 'AuthenticateController@register');
     Route::post('/login', 'AuthenticateController@login');
+    Route::resource('subjects', 'SubjectController');
+    Route::get('/criteria', 'CriterionController@index');
 });
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::resource('assessments', 'AssessmentController');
-    Route::resource('subjects', 'SubjectController');
 });

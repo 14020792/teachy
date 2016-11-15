@@ -2,25 +2,20 @@
   <div class="col-xs-3">
     <p class="lead">Select Subject</p>
     <select class="form-control" ng-model="selectedSubject"
-            ng-options="subjects.indexOf(subject) as subject.name for subject in subjects">
+            ng-options="subjects.indexOf(subject) as subject.name for subject in subjects"
+            ng-change="changeSubject()">
       <option value = "" disabled selected hidden>Select or search a subject</option>
       <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
     <p class="lead">Instructors</p>
-    <div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">
-      <a ng-repeat="instructor in subject.data track by $index" class="list-group-item"
+    <!--<div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">-->
+      <a ng-repeat="instructor in subject.instructors track by $index" class="list-group-item"
          ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
          {{instructor.name}}
       </a>
-    </div>
-    <!-- <div class="list-group">
-      <a ng-repeat="instructor in subjects[selectedSubject].data track by $index"
-         class="list-group-item"
-         ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
-         {{instructor.name}}
-      </a>
-    </div> -->
+    <!--</div>-->
+
   </div>
   <div class="col-xs-9">
     <div class="panel panel-default" ng-show="selectedInstructor != -1">
@@ -30,21 +25,21 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-3">
-            <img class="img-thumbnail img-circle" ng-src="{{subjects[selectedSubject].data[selectedInstructor].imgUrl}}">
+            <img class="img-thumbnail img-circle" ng-src="{{subject.instructors[selectedInstructor].avatar}}">
           </div>
           <div class="col-xs-9">
             <h1 style="margin-top: 0px; font-weight:400">
-              {{subjects[selectedSubject].data[selectedInstructor].name}}
+              {{subject.instructors[selectedInstructor].name}}
             </h1>
           </div>
         </div>
         <hr/>
         <div class="row">
-            <div class="col-xs-6" ng-repeat="aspect in aspects track by $index">
-              <h3>{{aspect}}<span class="pull-right">
-                {{subjects[selectedSubject].data[selectedInstructor].scores[$index]}}/5
+            <div class="col-xs-6" ng-repeat="criterion in criteria">
+              <h3>{{criterion.text}}<span class="pull-right">
+                {{ findCriterionValue(criterion.id) }}/5
               </span></h3>
-              <uib-progressbar max="5" value="subjects[selectedSubject].data[selectedInstructor].scores[$index]" style="margin-left: 0px;margin-right: 0px"/>
+              <uib-progressbar max="5" value="findCriterionValue(criterion.id)" style="margin-left: 0px;margin-right: 0px"/>
             </div>
           </div>
         </div>

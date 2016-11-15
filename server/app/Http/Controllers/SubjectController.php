@@ -25,13 +25,6 @@ class SubjectController extends Controller
      *   description="",
      *   operationId="index",
      *   produces={"application/xml", "application/json"},
-     *   @SWG\Parameter(
-     *     name="Authorization",
-     *     in="header",
-     *     description="",
-     *     required=true,
-     *     type="string"
-     *   ),
      *   @SWG\Response(
      *     response=200,
      *     description="successful operation",
@@ -54,7 +47,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::with('instructors')->get();
+        $subjects = Subject::all();
         return Reply::reply(1, 'get_subjects_success', $subjects, 200);
     }
 
@@ -95,13 +88,6 @@ class SubjectController extends Controller
      *   @SWG\Parameter(
      *     name="id",
      *     in="path",
-     *     description="",
-     *     required=true,
-     *     type="string"
-     *   ),
-     *   @SWG\Parameter(
-     *     name="Authorization",
-     *     in="header",
      *     description="",
      *     required=true,
      *     type="string"

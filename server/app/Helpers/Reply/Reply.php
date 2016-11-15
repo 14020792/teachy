@@ -9,6 +9,7 @@ class Reply
         'get_assessments_success' => 'Get assessments successfully',
         'get_subjects_success' => 'Get subjects list successfully',
         'get_subject_success' => 'Get subject successfully',
+        'get_criteria_success' => 'Get criteria successfully',
         'invalid_username' => 'Invalid username',
         'incorrect_password' => 'Incorrect password',
         'invalid_credentials' => 'Invalid credentials',
