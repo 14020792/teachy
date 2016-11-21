@@ -140,13 +140,21 @@ class AssessmentController extends Controller
 
         $assessments = $input['assessments'];
 
-        foreach ($assessments as $assessment) {
-            Assessment::create([
-                'user_id' => $user->id,
-                'ins_sub_id' => $input['ins_sub_id'],
-                'criterion_id' => $assessment['criterion_id'],
-                'value' => $assessment['value']
-            ]);
+        foreach ($assessments as $criterion_id => $value) {
+            $assessment = Assessment::where('user_id', $user->id)
+                ->where('ins_sub_id', $input['ins_sub_id'])
+                ->where('criterion_id', $criterion_id)->first();
+            if (!$assessment) {
+                Assessment::create([
+                    'user_id' => $user->id,
+                    'ins_sub_id' => $input['ins_sub_id'],
+                    'criterion_id' => $criterion_id,
+                    'value' => $value
+                ]);
+            } else {
+                $assessment->value = $value;
+                $assessment->update();
+            }
         }
 
         return Reply::reply(1, 'assess_success', null, 200);
@@ -183,6 +191,7 @@ class AssessmentController extends Controller
      */
     public function update(Request $request)
     {
+        /*
         $user = JWTAuth::parseToken()->authenticate();
 
         $input = $request->all();
@@ -193,6 +202,7 @@ class AssessmentController extends Controller
             $a = Assessment::find($assessment['id']);
             $a->value = $assessment['value'];
         }
+        */
     }
 
     /**

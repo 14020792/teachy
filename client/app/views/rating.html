@@ -27,11 +27,13 @@
         <div class="panel-body">
           <div class="col-xs-6" ng-repeat="criterion in RatingCtrl.criteria">
             <strong>{{criterion.text}}</strong>
-            {{RatingCtrl.rating.assessments[criterion.id]}}
             <div ng-if="RatingCtrl.rating.assessments[criterion.id] != null" star-rating ng-model="RatingCtrl.rating.assessments[criterion.id]" max="5"></div>
           </div>
         </div>
         <div class="footer footer-submit">
+          <div ng-show="RatingCtrl.notiMsg != null" ng-model="RatingCtrl.notiMsg" class="alert alert-success">
+            {{ RatingCtrl.notiMsg }}
+          </div>
           <button type="submit" class="btn btn-success btn-submit">
             <i class="ace-icon fa fa-check"></i>&nbsp;Submit
           </button>

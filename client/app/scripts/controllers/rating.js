@@ -13,14 +13,35 @@ angular.module('clientApp')
     headerService.change('rating');
     this.selectedInstructor = -1;
     this.selectedSubject = -1;
+    this.errorMsg = null;
+    this.notiMsg = null;
+
+    subjectService.load().then(function(d) {
+      this.subjects = d.data;
+      if (d.status == 0) {
+        this.errorMsg = d.msg;
+      }
+    }.bind(this));
+
+    criteriaService.load().then(function(d) {
+      this.criteria = d;
+      ratingService.load().then(function(d) {
+        this.assessments = d.data;
+        if (d.status == 0) {
+          this.errorMsg = d.msg;
+        }
+      }.bind(this));
+    }.bind(this));
 
     this.setInstructor = function(index){
+      this.errorMsg = null;
+      this.notiMsg = null;
       this.selectedInstructor = index;
 
       //Init values for rating
       this.rating = {
         ins_sub_id : this.subject.instructors[index].pivot.id,
-        assessments : []
+        assessments : {}
       };
       for (var i in this.criteria) {
         this.rating.assessments[this.criteria[i].id] = 0;
@@ -41,15 +62,24 @@ angular.module('clientApp')
       }
     }.bind(this);
 
-    this.errorMsg = null;
-    subjectService.load().then(function(d) {
-      this.subjects = d.data;
-      if (d.status == 0) {
-        this.errorMsg = d.msg;
-      }
-    }.bind(this));
+    this.submit = function() {
+      ratingService.submit(this.rating).then(function(d) {
+        if (d.status == 0) {
+          this.errorMsg = d.msg;
+        } else {
+          var ins_sub_id = this.subject.instructors[this.selectedInstructor].pivot.id;
+          for (var i in this.criteria) {
+            var criterion = this.criteria[i];
+            this.assessments[ins_sub_id].assessments[criterion.id].value = this.rating.assessments[criterion.id];
+          }
+          this.notiMsg = d.msg;
+        }
+      }.bind(this));
+    }.bind(this);
 
     this.changeSubject = function() {
+      this.errorMsg = null;
+      this.notiMsg = null;
       this.selectedInstructor = -1;
       subjectService.loadSubject(this.subjects[this.selectedSubject].id)
         .then(function(d) {
@@ -59,11 +89,4 @@ angular.module('clientApp')
           }
         }.bind(this));
     }.bind(this);
-
-    criteriaService.load().then(function(d) {
-      this.criteria = d;
-      ratingService.load().then(function(d) {
-        this.assessments = d;
-      }.bind(this));
-    }.bind(this));
   });

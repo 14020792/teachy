@@ -6,6 +6,7 @@ namespace App\Helpers\Reply;
 class Reply
 {
     private $msg = [
+        'assess_success' => 'Rating successfully',
         'get_assessments_success' => 'Get assessments successfully',
         'get_subjects_success' => 'Get subjects list successfully',
         'get_subject_success' => 'Get subject successfully',
