@@ -28,17 +28,17 @@ var app = angular.module('clientApp', [
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'MainCtrl'
       })
       .when('/stats', {
         templateUrl: 'views/stats.html',
         controller: 'StatsCtrl',
-        controllerAs: 'stats'
+        controllerAs: 'StatsCtrl'
       })
       .when('/rating', {
         templateUrl: 'views/rating.html',
         controller: 'RatingCtrl',
-        controllerAs: 'rating'
+        controllerAs: 'RatingCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -98,7 +98,7 @@ function starRating() {
             filled: i < scope.ratingValue
           });
         }
-      };
+      }
       scope.toggle = function(index) {
         if (scope.readonly == undefined || scope.readonly === false) {
           scope.ratingValue = index + 1;
@@ -108,9 +108,7 @@ function starRating() {
         }
       };
       scope.$watch('ratingValue', function(oldValue, newValue) {
-        if (newValue) {
-          updateStars();
-        }
+        if (newValue || newValue == 0) { updateStars(); }
       });
     }
   };

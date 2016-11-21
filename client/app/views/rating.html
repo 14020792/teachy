@@ -1,34 +1,34 @@
 <div class="row">
   <div class="col-xs-3">
     <p class="lead">Select Subject</p>
-    <select class="form-control" ng-model="selectedSubject"
-            ng-options="subjects.indexOf(subject) as subject.name for subject in subjects"
-            ng-change="changeSubject()">
+    <select class="form-control" ng-model="RatingCtrl.selectedSubject"
+            ng-options="RatingCtrl.subjects.indexOf(subject) as subject.name for subject in RatingCtrl.subjects"
+            ng-change="RatingCtrl.changeSubject()">
       <option value="" disabled selected hidden>Select or search a subject</option>
       <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
     <p class="lead">Instructors</p>
     <!--<div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">-->
-      <a ng-repeat="instructor in subject.instructors track by $index" class="list-group-item"
-         ng-class="{'active':selectedInstructor == $index}"
-         ng-click="setInstructor($index)">
+      <a ng-repeat="instructor in RatingCtrl.subject.instructors track by $index" class="list-group-item"
+         ng-class="{'active':RatingCtrl.selectedInstructor == $index}"
+         ng-click="RatingCtrl.setInstructor($index)">
         {{instructor.name}}
       </a>
     <!--</div>-->
   </div>
 
-  <form ng-submit="submit()">
+  <form ng-submit="RatingCtrl.submit()">
     <div class="col-xs-9">
-      <div class="panel panel-default" ng-show="selectedInstructor != -1">
+      <div class="panel panel-default" ng-show="RatingCtrl.selectedInstructor != -1">
         <div class="panel-heading">
           <h3 class="panel-title">Rating dashboard</h3>
         </div>
         <div class="panel-body">
-          <div class="col-xs-6" ng-repeat="criterion in criteria track by $index">
+          <div class="col-xs-6" ng-repeat="criterion in RatingCtrl.criteria">
             <strong>{{criterion.text}}</strong>
-            {{rating.assessments[$index]}}
-            <div star-rating ng-model="rating.assessments[$index]" max="5"></div>
+            {{RatingCtrl.rating.assessments[criterion.id]}}
+            <div ng-if="RatingCtrl.rating.assessments[criterion.id] != null" star-rating ng-model="RatingCtrl.rating.assessments[criterion.id]" max="5"></div>
           </div>
         </div>
         <div class="footer footer-submit">
