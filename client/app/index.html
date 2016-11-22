@@ -24,7 +24,7 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="header" ng-controller="HeaderCtrl">
+<div class="header" ng-controller="HeaderCtrl as HeaderCtrl">
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -43,19 +43,23 @@
       <!-- <div class="row" style="display: block"> -->
         <div class="collapse navbar-collapse" id="js-navbar-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li ng-class="{'active':info.selectedTab === 'home'}">
-              <a href="#/"><span class="fa fa-home"></span>&nbsp Home</a>
+            <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'home'}">
+              <a href="#/"><span class="fa fa-home"></span>&nbsp Trang chủ</a>
             </li>
-            <li ng-class="{'active':info.selectedTab === 'rating'}">
-              <a href="#/rating"><span class="fa fa-pencil"></span> &nbsp Rate!</a>
+            <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'rating'}">
+              <a href="#/rating"><span class="fa fa-pencil"></span> &nbsp Đánh giá</a>
             </li>
-            <li ng-class="{'active':info.selectedTab === 'stats'}">
-              <a href="#/stats"><span class="fa fa-bar-chart"></span>&nbsp Statistics</a>
+            <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'stats'}">
+              <a href="#/stats"><span class="fa fa-bar-chart"></span>&nbsp Thống kê</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <button ng-if="!isAuthenticated" class="btn btn-default btn-login" ng-click="open()"><span class="fa fa-sign-in">&nbsp Login</span></button>
-            <button ng-if="isAuthenticated" class="btn btn-default" ng-click="logout()"><span class="fa fa-sign-in">&nbsp Logout</span></button>
+            <button ng-if="!isAuthenticated" class="btn btn-default btn-login" ng-click="HeaderCtrl.openLogin()">
+              <span class="fa fa-sign-in">&nbsp Đăng nhập</span>
+            </button>
+            <button ng-if="isAuthenticated" class="btn btn-default" ng-click="HeaderCtrl.logout()">
+              <span class="fa fa-sign-in">&nbsp Đăng xuất</span>
+            </button>
           </ul>
         </div>
     </div>
@@ -63,7 +67,7 @@
 </div>
 
 <div class="container">
-  <div ng-view=""></div>
+  <div ui-view></div>
 </div>
 
 <!-- build:js(.) scripts/vendor.js -->
@@ -81,6 +85,7 @@
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 
 <!-- endbuild -->

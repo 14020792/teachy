@@ -8,27 +8,70 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ModalInstanceCtrl', ['$http', '$uibModalInstance', 'config', '$scope', '$window',
-    function ($http, $uibModalInstance, config, $scope, $window) {
-      $scope.username = "";
-      $scope.password = "";
-      $scope.errorMsg = null;
+  .controller('ModalInstanceCtrl', ['$http', '$uibModalInstance', '$uibModal', 'config', '$window',
+    function ($http, $uibModalInstance, $uibModal, config, $window) {
+      this.username = "";
+      this.password = "";
 
-      $scope.login = function() {
-        console.log($scope.errorMsg);
+      this.registerData = {
+        username : "",
+        password : "",
+        password_confirmation : "",
+        email : "",
+        name : "",
+        code : ""
+      };
+
+      this.errorMsg = null;
+      this.notiMsg = null;
+
+      this.openLogin = function() {
+        $uibModalInstance.dismiss();
+        $uibModal.open({
+          controller: 'ModalInstanceCtrl as ModalInstanceCtrl',
+          templateUrl: 'views/login.html'
+        });
+      };
+
+      this.login = function() {
         $http.post(config.serverUrl + "/login",
           {
-            username: $scope.username,
-            password: $scope.password
+            username: this.username,
+            password: this.password
           }
         ).then(function success(response) {
           localStorage.setItem('teachyToken', response.data.data.token)
-          $scope.errorMsg = null;
+          this.errorMsg = null;
           $uibModalInstance.dismiss();
           $window.location.reload();
-        }, function error(response) {
-          $scope.errorMsg = response.data.msg;
-        })
-      };
+        }.bind(this), function error(response) {
+          this.errorMsg = response.data.msg;
+        }.bind(this))
+      }.bind(this);
 
+      this.openRegister = function() {
+        $uibModalInstance.dismiss();
+        $uibModal.open({
+          controller: 'ModalInstanceCtrl as ModalInstanceCtrl',
+          templateUrl: 'views/register.html'
+        });
+      }.bind(this);
+
+      this.register = function() {
+        $http.post(config.serverUrl + "/register", this.registerData)
+          .then(function success(response) {
+            this.errorMsg = null;
+            this.notiMsg = response.data.msg;
+          }.bind(this), function error(response) {
+            this.notiMsg = null;
+            this.errorMsg = [];
+            for (var k in response.data.data) {
+              var er = response.data.data[k];
+              console.log(er);
+              for (var e in er) {
+                this.errorMsg.push(er[e]);
+              }
+            }
+          }.bind(this))
+      }.bind(this);
     }]);

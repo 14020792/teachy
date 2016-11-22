@@ -120,7 +120,7 @@ class SubjectController extends Controller
             $ins_sub = InstructorSubject::where('instructor_id', $instructor->id)
                 ->where('subject_id', $subject->id)->first();
             $assessments = $ins_sub->assessments()->with('criterion')
-                ->select(DB::raw('AVG(value) as value'), 'criterion_id')
+                ->select(DB::raw('ROUND(AVG(value), 1) as value'), 'criterion_id')
                 ->groupBy('criterion_id')
                 ->orderBy('criterion_id', 'asc')
                 ->get();

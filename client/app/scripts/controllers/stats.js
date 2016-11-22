@@ -8,45 +8,47 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('StatsCtrl', function ($scope, headerService, subjectService, criteriaService) {
+  .controller('StatsCtrl', function (headerService, subjectService, criteriaService) {
     headerService.change('stats');
 
-    $scope.selectedInstructor = -1;
-    $scope.selectedSubject = -1;
-    $scope.setInstructor = function(index){
-      $scope.selectedInstructor = index;
-    };
+    this.selectedInstructor = -1;
+    this.selectedSubject = -1;
+    this.errorMsg = null;
 
-    $scope.errorMsg = null;
     subjectService.load().then(function(d) {
-      $scope.subjects = d.data;
+      this.subjects = d.data;
       if (d.status == 0) {
-        $scope.errorMsg = d.msg;
+        this.errorMsg = d.msg;
       }
-    });
+    }.bind(this));
 
     criteriaService.load().then(function(d) {
-      $scope.criteria = d;
-    });
+      this.criteria = d;
+    }.bind(this));
 
-    $scope.findCriterionValue = function(id) {
-      if ($scope.subject != null && $scope.selectedInstructor != -1) {
-        var assessments = $scope.subject.instructors[$scope.selectedInstructor].assessments;
+    this.setInstructor = function(index){
+      this.selectedInstructor = index;
+    }.bind(this);
+
+    this.findCriterionValue = function(id) {
+      if (this.subject != null && this.selectedInstructor != -1) {
+        var assessments = this.subject.instructors[this.selectedInstructor].assessments;
         for (var k in assessments) {
           if (assessments[k].criterion_id == id) return assessments[k].value;
         }
       }
       return 0;
-    };
+    }.bind(this);
 
-    $scope.changeSubject = function() {
-      $scope.selectedInstructor = -1;
-      subjectService.loadSubject($scope.subjects[$scope.selectedSubject].id)
+    this.changeSubject = function() {
+      this.selectedInstructor = -1;
+      subjectService.loadSubject(this.subjects[this.selectedSubject].id)
         .then(function(d) {
-          $scope.subject = d.data;
+          this.subject = d.data;
           if (d.status == 0) {
-            $scope.errorMsg = d.msg;
+            this.errorMsg = d.msg;
           }
-        });
-    };
+        }.bind(this));
+    }.bind(this);
+
   });

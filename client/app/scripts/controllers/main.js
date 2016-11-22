@@ -8,6 +8,6 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, headerService) {
+  .controller('MainCtrl', function (headerService) {
     headerService.change('home');
   });

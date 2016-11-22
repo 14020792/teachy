@@ -8,19 +8,18 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('HeaderCtrl', function($scope, $uibModal, headerService, userService, $window) {
-    $scope.info = headerService;
-    $scope.user = userService;
+  .controller('HeaderCtrl', function($uibModal, headerService, userService, $window) {
+    this.info = headerService;
+    this.user = userService;
 
-    $scope.open = function() {
+    this.openLogin = function() {
       $uibModal.open({
-        controller: 'ModalInstanceCtrl as modalInstance',
-        templateUrl: 'views/login.html',
-        scope: $scope
+        controller: 'ModalInstanceCtrl as ModalInstanceCtrl',
+        templateUrl: 'views/login.html'
       });
     };
 
-    $scope.logout = function() {
+    this.logout = function() {
       localStorage.removeItem('teachyToken');
       $window.location.reload();
     }

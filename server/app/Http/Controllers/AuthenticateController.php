@@ -54,7 +54,7 @@ class AuthenticateController extends Controller
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'name' => 'required',
-            'code' => 'required|numeric'
+            'code' => 'required|numeric|unique:user'
         ]);
 
         if ($validator->fails()) {

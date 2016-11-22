@@ -191,18 +191,7 @@ class AssessmentController extends Controller
      */
     public function update(Request $request)
     {
-        /*
-        $user = JWTAuth::parseToken()->authenticate();
-
-        $input = $request->all();
-
-        $assessments = $input['assessments'];
-
-        foreach ($assessments as $assessment) {
-            $a = Assessment::find($assessment['id']);
-            $a->value = $assessment['value'];
-        }
-        */
+        //
     }
 
     /**

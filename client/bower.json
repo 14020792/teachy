@@ -15,7 +15,8 @@
     "font-awesome": "^4.6.3",
     "components-font-awesome": "^4.6.3",
     "angular-bootstrap": "^2.1.4",
-    "angular-jwt": "^0.1.7"
+    "angular-jwt": "^0.1.7",
+    "angular-ui-router": "~0.3.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

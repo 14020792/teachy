@@ -18,31 +18,37 @@ var app = angular.module('clientApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.router'
   ])
   .constant('config', {
     serverUrl : 'http://localhost:8080'
   })
-  .config(function ($routeProvider, $httpProvider, jwtOptionsProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, jwtOptionsProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'MainCtrl'
       })
-      .when('/stats', {
+      .state('stats', {
+        url: '/stats',
         templateUrl: 'views/stats.html',
         controller: 'StatsCtrl',
         controllerAs: 'StatsCtrl'
       })
-      .when('/rating', {
+      .state('rating', {
+        url: '/rating',
         templateUrl: 'views/rating.html',
         controller: 'RatingCtrl',
-        controllerAs: 'RatingCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controllerAs: 'RatingCtrl',
+        data: {
+          requiresLogin: true
+        }
       });
+
+    $urlRouterProvider.otherwise('/');
 
     jwtOptionsProvider.config({
       tokenGetter: function() {
@@ -60,14 +66,14 @@ var app = angular.module('clientApp', [
   })
   .directive('animateOnChange', function($timeout) {
     return function(scope, element, attr) {
-        scope.$watch(attr.animateOnChange, function(nv,ov) {
-            if (nv!=ov) {
-                element.addClass('changed');
-                $timeout(function() {
-                    element.removeClass('changed');
-                }, 800);
-            }
-        });
+      scope.$watch(attr.animateOnChange, function(nv,ov) {
+        if (nv!=ov) {
+          element.addClass('changed');
+          $timeout(function() {
+            element.removeClass('changed');
+          }, 800);
+        }
+      });
     };
   })
   .directive('starRating',starRating);
@@ -76,10 +82,10 @@ function starRating() {
   return {
     restrict: 'EA',
     template: '<ul class="star-rating" ng-class="{readonly: readonly}">' +
-      '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
-      '    <i class="fa fa-star"></i>' + // or &#9733
-      '  </li>' +
-      '</ul>',
+    '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
+    '    <i class="fa fa-star"></i>' + // or &#9733
+    '  </li>' +
+    '</ul>',
     scope: {
       ratingValue: '=ngModel',
       max: '=?', // optional (default is 5)

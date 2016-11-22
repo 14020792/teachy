@@ -1,49 +1,52 @@
 <div class="row">
   <div class="col-xs-3">
-    <p class="lead">Select Subject</p>
-    <select class="form-control" ng-model="selectedSubject"
-            ng-options="subjects.indexOf(subject) as subject.name for subject in subjects"
-            ng-change="changeSubject()">
-      <option value = "" disabled selected hidden>Select or search a subject</option>
+    <p class="lead">Môn học</p>
+    <select class="form-control" ng-model="StatsCtrl.selectedSubject"
+            ng-options="StatsCtrl.subjects.indexOf(subject) as subject.name for subject in StatsCtrl.subjects"
+            ng-change="StatsCtrl.changeSubject()">
+      <option value = "" disabled selected hidden>Chọn một môn học</option>
       <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
-    <p class="lead">Instructors</p>
+    <p class="lead">Giảng viên</p>
     <!--<div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">-->
-      <a ng-repeat="instructor in subject.instructors track by $index" class="list-group-item"
-         ng-class="{'active':selectedInstructor == $index}" ng-click="setInstructor($index)">
-         {{instructor.name}}
-      </a>
+    <a ng-repeat="instructor in StatsCtrl.subject.instructors track by $index" class="list-group-item"
+       ng-class="{'active': StatsCtrl.selectedInstructor == $index}" ng-click="StatsCtrl.setInstructor($index)">
+      {{instructor.name}}
+    </a>
     <!--</div>-->
 
   </div>
   <div class="col-xs-9">
-    <div class="panel panel-default" ng-show="selectedInstructor != -1">
+    <div class="panel panel-default" ng-show="StatsCtrl.selectedInstructor != -1">
       <div class="panel-heading">
-        <h3 class="panel-title">Instructor Details</h3>
+        <h3 class="panel-title">Thông tin giảng viên</h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-3">
-            <img class="img-thumbnail img-circle" ng-src="{{subject.instructors[selectedInstructor].avatar}}">
+            <img class="img-thumbnail img-circle" ng-src="{{StatsCtrl.subject.instructors[StatsCtrl.selectedInstructor].avatar}}">
           </div>
           <div class="col-xs-9">
             <h1 style="margin-top: 0px; font-weight:400">
-              {{subject.instructors[selectedInstructor].name}}
+              {{StatsCtrl.subject.instructors[StatsCtrl.selectedInstructor].name}}
             </h1>
+            <p>Mã giáo viên : {{StatsCtrl.subject.instructors[StatsCtrl.selectedInstructor].code}}</p>
+            <p>Địa chỉ email : {{StatsCtrl.subject.instructors[StatsCtrl.selectedInstructor].email}}</p>
+            <p>Thông tin : {{StatsCtrl.subject.instructors[StatsCtrl.selectedInstructor].info}}</p>
           </div>
         </div>
         <hr/>
         <div class="row">
-            <div class="col-xs-6" ng-repeat="criterion in criteria">
-              <h3>{{criterion.text}}<span class="pull-right">
-                {{ findCriterionValue(criterion.id) }}/5
-              </span></h3>
-              <uib-progressbar max="5" value="findCriterionValue(criterion.id)" style="margin-left: 0px;margin-right: 0px"/>
-            </div>
+          <div class="col-xs-12" ng-repeat="criterion in StatsCtrl.criteria">
+            <h4>{{criterion.text}}<span class="pull-right">
+                {{ StatsCtrl.findCriterionValue(criterion.id) }}/5
+              </span></h4>
+            <uib-progressbar max="5" value="StatsCtrl.findCriterionValue(criterion.id)" style="margin-left: 0px;margin-right: 0px"/>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

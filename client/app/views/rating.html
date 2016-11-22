@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-3">
-    <p class="lead">Select Subject</p>
+    <p class="lead">Môn học</p>
     <select class="form-control" ng-model="RatingCtrl.selectedSubject"
             ng-options="RatingCtrl.subjects.indexOf(subject) as subject.name for subject in RatingCtrl.subjects"
             ng-change="RatingCtrl.changeSubject()">
-      <option value="" disabled selected hidden>Select or search a subject</option>
+      <option value="" disabled selected hidden>Chọn một môn học</option>
       <!-- <option ng-repeat="subject in subjects track by $index" value = {{$index}}>{{subject.name}}</option> -->
     </select>
     <br/>
-    <p class="lead">Instructors</p>
+    <p class="lead">Giảng viên</p>
     <!--<div class="list-group" ng-repeat="subject in subjects" ng-if="subject.id == subjects[selectedSubject].id">-->
       <a ng-repeat="instructor in RatingCtrl.subject.instructors track by $index" class="list-group-item"
          ng-class="{'active':RatingCtrl.selectedInstructor == $index}"
@@ -22,11 +22,11 @@
     <div class="col-xs-9">
       <div class="panel panel-default" ng-show="RatingCtrl.selectedInstructor != -1">
         <div class="panel-heading">
-          <h3 class="panel-title">Rating dashboard</h3>
+          <h3 class="panel-title">Mẫu đánh giá</h3>
         </div>
         <div class="panel-body">
-          <div class="col-xs-6" ng-repeat="criterion in RatingCtrl.criteria">
-            <strong>{{criterion.text}}</strong>
+          <div class="col-xs-12" ng-repeat="criterion in RatingCtrl.criteria">
+            <h4>{{criterion.text}}</h4>
             <div ng-if="RatingCtrl.rating.assessments[criterion.id] != null" star-rating ng-model="RatingCtrl.rating.assessments[criterion.id]" max="5"></div>
           </div>
         </div>
