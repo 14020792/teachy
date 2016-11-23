@@ -46,7 +46,7 @@
             <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'home'}">
               <a href="#/"><span class="fa fa-home"></span>&nbsp Trang chủ</a>
             </li>
-            <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'rating'}">
+            <li ng-if="isAuthenticated" ng-class="{'active': HeaderCtrl.info.selectedTab === 'rating'}">
               <a href="#/rating"><span class="fa fa-pencil"></span> &nbsp Đánh giá</a>
             </li>
             <li ng-class="{'active': HeaderCtrl.info.selectedTab === 'stats'}">
@@ -58,7 +58,7 @@
               <span class="fa fa-sign-in">&nbsp Đăng nhập</span>
             </button>
             <button ng-if="isAuthenticated" class="btn btn-default" ng-click="HeaderCtrl.logout()">
-              <span class="fa fa-sign-in">&nbsp Đăng xuất</span>
+              <span class="fa fa-sign-out">&nbsp Đăng xuất</span>
             </button>
           </ul>
         </div>

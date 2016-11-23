@@ -54,7 +54,7 @@ var app = angular.module('clientApp', [
       tokenGetter: function() {
         return localStorage.getItem('teachyToken');
       },
-      whiteListedDomains: ['localhost', 'http://api.teachy.dev'],
+      whiteListedDomains: ['localhost', 'api.teachy.dev'],
       unauthenticatedRedirectPath: '/'
     });
 

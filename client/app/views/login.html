@@ -4,7 +4,7 @@
     <form ng-submit="ModalInstanceCtrl.login()">
       <input type="text" ng-model="ModalInstanceCtrl.username" name="username" placeholder="Tên đăng nhập">
       <input type="password" ng-model="ModalInstanceCtrl.password" name="password" placeholder="Mật khẩu">
-      <div ng-model="ModalInstanceCtrl.errorMsg" ng-if="ModalInstanceCtrl.errorMsg != null" class="alert alert-danger">
+      <div ng-if="ModalInstanceCtrl.errorMsg != null" class="alert alert-danger">
         {{ ModalInstanceCtrl.errorMsg }}
       </div>
       <input type="submit" name="login" class="login loginmodal-submit" value="Đăng nhập">

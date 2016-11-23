@@ -39,10 +39,15 @@
         <hr/>
         <div class="row">
           <div class="col-xs-12" ng-repeat="criterion in StatsCtrl.criteria">
-            <h4>{{criterion.text}}<span class="pull-right">
-                {{ StatsCtrl.findCriterionValue(criterion.id) }}/5
-              </span></h4>
-            <uib-progressbar max="5" value="StatsCtrl.findCriterionValue(criterion.id)" style="margin-left: 0px;margin-right: 0px"/>
+            <h4>{{criterion.text}}</h4>
+            <div class="row">
+              <div class="col-xs-8">
+                <uib-progressbar max="5" value="StatsCtrl.findCriterionValue(criterion.id)" style="margin-left: 0px;margin-right: 0px"/>
+              </div>
+              <span style="margin-left:30px">
+              {{ StatsCtrl.findCriterionValue(criterion.id) }}/5
+              </span>
+            </div>
           </div>
         </div>
       </div>

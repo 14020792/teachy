@@ -31,11 +31,14 @@
           </div>
         </div>
         <div class="footer footer-submit">
-          <div ng-show="RatingCtrl.notiMsg != null" ng-model="RatingCtrl.notiMsg" class="alert alert-success">
+          <div ng-if="RatingCtrl.notiMsg != null" class="alert alert-success">
             {{ RatingCtrl.notiMsg }}
           </div>
+          <a href ng-click="RatingCtrl.randomRating()" style = "margin:40px">
+            <i class="ace-icon fa fa-random"></i>&nbsp;Ngẫu nhiên
+          </a>
           <button type="submit" class="btn btn-success btn-submit">
-            <i class="ace-icon fa fa-check"></i>&nbsp;Submit
+            <i class="ace-icon fa fa-check"></i>&nbsp;Đánh giá
           </button>
         </div>
       </div>

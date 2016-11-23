@@ -7,16 +7,16 @@ DELETE FROM `user` WHERE `username` = 'hainh';
 DELETE FROM `instructor_subject`;
 DELETE FROM `assessment`;
 
-INSERT INTO `instructor`(id, name, email, code, avatar) VALUES
-(1, 'TS. Bùi Quang Hưng', 'hungbq@uet.vnu.vn', '001', '/img/instructors/1/01.jpg')
-, (2, 'PGS.TS. Nguyễn Hà Nam', 'namnh@uet.vnu.vn', '002', '/img/instructors/1/01.jpg')
-, (3, 'PGS.TS. Nguyễn Hải Châu', 'chaunh@uet.vnu.vn', '003', '/img/instructors/1/01.jpg')
-, (4, 'PGS.TS. Hà Quang Thụy', 'thuyhq@uet.vnu.vn', '005', '/img/instructors/1/01.jpg')
-, (5, 'TS. Phan Xuân Hiếu', 'hieupx@uet.vnu.vn', '006', '/img/instructors/1/01.jpg')
-, (6, 'TS. Đặng Văn Hưng', 'hungdv@uet.vnu.vn', '009', '/img/instructors/1/01.jpg')
-, (7, 'TS. Nguyễn Thị Huyền Châu', 'chaunth@uet.vnu.vn', '010', '/img/instructors/1/01.jpg')
-, (8, 'PGS.TS. Nguyễn Ngọc Bình', 'binhnn@uet.vnu.vn', '011', '/img/instructors/1/01.jpg')
-, (9, 'TS. Đặng Đức Hạnh', 'hanhdd@uet.vnu.vn', '012', '/img/instructors/1/01.jpg');
+INSERT INTO `instructor`(id, name, email, code) VALUES
+(1, 'TS. Bùi Quang Hưng', 'hungbq@vnu.edu.vn', '001')
+, (2, 'PGS.TS. Nguyễn Hà Nam', 'namnh@vnu.edu.vn', '002')
+, (3, 'PGS.TS. Nguyễn Hải Châu', 'chaunh@vnu.edu.vn', '003')
+, (4, 'PGS.TS. Hà Quang Thụy', 'thuyhq@vnu.edu.vn', '005')
+, (5, 'TS. Phan Xuân Hiếu', 'hieupx@vnu.edu.vn', '006')
+, (6, 'TS. Đặng Văn Hưng', 'hungdv@vnu.edu.vn', '009')
+, (7, 'TS. Nguyễn Thị Huyền Châu', 'chaunth@vnu.edu.vn', '010')
+, (8, 'PGS.TS. Nguyễn Ngọc Bình', 'binhnn@vnu.edu.vn', '011')
+, (9, 'TS. Đặng Đức Hạnh', 'hanhdd@vnu.edu.vn', '012');
 
 INSERT INTO `subject`(id, name, code) VALUES
 (1, 'Quản lý dự án Hệ thống thông tin', 'INT 6124')
