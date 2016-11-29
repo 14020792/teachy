@@ -18,4 +18,5 @@ Route::group(['middleware' => []], function() {
 });
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::resource('assessments', 'AssessmentController');
+    Route::put('update', 'AuthenticateController@update');
 });

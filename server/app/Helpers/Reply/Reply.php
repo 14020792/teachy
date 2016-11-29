@@ -18,7 +18,9 @@ class Reply
         'login_success' => 'Đăng nhập thành công',
         'register_failed' => 'Đăng kí không thành công',
         'register_success' => 'Đăng kí thành công',
-        'token_failed' => 'Could not create token'
+        'token_failed' => 'Could not create token',
+        'update_failed' => 'Cập nhật tài khoản không thành công',
+        'update_success' => 'Cập nhật tài khoản thành công'
     ];
 
     public function reply($status, $m, $data = null, $code) {

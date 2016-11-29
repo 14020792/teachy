@@ -61,6 +61,29 @@ class Controller extends BaseController
      *             default="",
      *         )
      *     ),
+     *      @SWG\Definition(
+     *         definition="AuthenticateUpdate",
+     *        @SWG\Property(
+     *             property="name",
+     *             type="string",
+     *             default="",
+     *         ),
+     *        @SWG\Property(
+     *             property="email",
+     *             type="string",
+     *             default="",
+     *         ),
+     *        @SWG\Property(
+     *             property="avatar",
+     *             type="string",
+     *             default="",
+     *        ),
+     *        @SWG\Property(
+     *             property="code",
+     *             type="string",
+     *             default="",
+     *         )
+     *     ),
      *     @SWG\Definition(
      *         definition="AuthenticateLogin",
      *         @SWG\Property(

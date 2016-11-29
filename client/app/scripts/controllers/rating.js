@@ -66,7 +66,6 @@ angular.module('clientApp')
       for (var i in this.criteria) {
         this.rating.assessments[this.criteria[i].id] = Math.floor(Math.random() * 5) + 1;
       }
-      console.log(this.rating);
     }.bind(this);
 
     this.submit = function() {
@@ -77,6 +76,12 @@ angular.module('clientApp')
           var ins_sub_id = this.subject.instructors[this.selectedInstructor].pivot.id;
           for (var i in this.criteria) {
             var criterion = this.criteria[i];
+            if (!(ins_sub_id in this.assessments)) {
+              this.assessments[ins_sub_id] = {
+                assessments: {}
+              }
+            }
+            this.assessments[ins_sub_id].assessments[criterion.id] = {};
             this.assessments[ins_sub_id].assessments[criterion.id].value = this.rating.assessments[criterion.id];
           }
           this.notiMsg = d.msg;

@@ -141,4 +141,63 @@ class AuthenticateController extends Controller
 
     }
 
+    /**
+     * @SWG\Put(path="/update",
+     *   tags={"User"},
+     *   summary="Update",
+     *   description="",
+     *   operationId="index",
+     *   produces={"application/xml", "application/json"},
+     *   @SWG\Parameter(
+     *     name="data",
+     *     in="body",
+     *     required=true,
+     *     @SWG\Schema(ref="#/definitions/AuthenticateUpdate"),
+     *   ),
+     *   @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @SWG\Schema(type="string"),
+     *     @SWG\Header(
+     *       header="X-Rate-Limit",
+     *       type="integer",
+     *       format="int32",
+     *       description=""
+     *     ),
+     *     @SWG\Header(
+     *       header="X-Expires-After",
+     *       type="string",
+     *       format="date-time",
+     *       description="date in UTC when token expires"
+     *     )
+     *   ),
+     *   @SWG\Response(response=400, description="")
+     * )
+     */
+    public function update(Request $request) {
+        $input = $request->all();
+        $user = JWTAuth::parseToken()->authenticate();
+
+        $validator = Validator::make($input, [
+            'code' => "numeric|unique:user,code,{$user->code},code",
+            'email' => "email|unique:user,email,{$user->email},email"
+        ]);
+
+        if ($validator->fails()) {
+            return Reply::reply(0, 'update_failed', $validator->messages(), 400);
+        }
+
+        $user->fill($input);
+        $user->update();
+
+        return Reply::reply(1, 'update_success', null, 200);
+    }
+
 }
