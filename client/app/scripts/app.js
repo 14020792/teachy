@@ -46,6 +46,15 @@ var app = angular.module('clientApp', [
         data: {
           requiresLogin: true
         }
+      })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'ProfileCtrl',
+        data: {
+          requiresLogin: true
+        }
       });
 
     $urlRouterProvider.otherwise('/');
@@ -63,18 +72,6 @@ var app = angular.module('clientApp', [
   .run(function(authManager) {
     authManager.checkAuthOnRefresh();
     authManager.redirectWhenUnauthenticated();
-  })
-  .directive('animateOnChange', function($timeout) {
-    return function(scope, element, attr) {
-      scope.$watch(attr.animateOnChange, function(nv,ov) {
-        if (nv!=ov) {
-          element.addClass('changed');
-          $timeout(function() {
-            element.removeClass('changed');
-          }, 800);
-        }
-      });
-    };
   })
   .directive('starRating',starRating);
 

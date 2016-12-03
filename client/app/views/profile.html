@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <h1>Chỉnh sửa hồ sơ</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="text-center">
+        <!--Anh vua upload-->
+        <img ng-if="thumbnail.dataUrl != 'default'" ng-src="{{ thumbnail.dataUrl }}" width ="200" height="200" class="img-circle">
+        <!--Anh tu tren server-->
+        <img ng-if="thumbnail.dataUrl == 'default'"ng-src="images/img/01.jpg" width ="200" height="200" class="img-circle">
+        <h6>Tải một ảnh mới...</h6>
+
+        <label class="btn">
+          <span class="fa fa-upload"></span>&nbsp Upload
+          <input type="file" name="file" onchange="angular.element(this).scope().photoChanged(this.files)" style="display: none;" />
+
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md-9 personal-info">
+      <h3>Thông tin cá nhân</h3>
+
+      <form class="form-horizontal" role="form">
+        <div ng-repeat="(key,obj) in ProfileCtrl.details track by $index" class="form-group">
+          <label class="col-lg-3 control-label">{{key}}: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" ng-model="obj">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input type="button" class="btn btn-default" value="Save Changes">
+            <input type="reset" class="btn btn-default" value="Cancel">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<hr>
