@@ -188,16 +188,23 @@ class AuthenticateController extends Controller
         $validator = Validator::make($input, [
             'code' => "numeric|digits:8|unique:user,code,{$user->code},code",
             'email' => "email|unique:user,email,{$user->email},email",
-            'name' => 'min:6'
+            'name' => 'min:6',
+            'password' => 'confirmed|min:6',
+            'password_confirmation' => 'required_with:password',
         ]);
 
         if ($validator->fails()) {
             return Reply::reply(0, 'update_failed', $validator->messages(), 400);
         }
+
+        if (isset($input['password']) && ($input['password'] == "")) unset($input['password']);
+
         $user->fill($input);
 
         if (isset($input['avatar']) && starts_with($input['avatar'], 'data:')) $user->avatar = $this->base64_to_jpg($input['avatar'], $user->id);
-
+        if (isset($input['password']) && ($input['password'] != "")) {
+            $user->password = bcrypt($input['password']);
+        }
         $user->update();
 
         return Reply::reply(1, 'update_success', null, 200);

@@ -51,6 +51,23 @@
             </p>
           </div>
         </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Mật khẩu mới: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="password"
+                   ng-model="ProfileCtrl.user.password" placeholder="Để trống nếu không cập nhật"/>
+            <p ng-repeat="error in ProfileCtrl.errorData.password" ng-if="ProfileCtrl.errorData != null" class="error-msg">
+              {{ error }}
+            </p>
+          </div>
+        </div>
+        <div ng-if="ProfileCtrl.user.password" class="form-group">
+          <label class="col-lg-3 control-label">Xác nhận mật khẩu mới: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="password"
+                   ng-model="ProfileCtrl.user.password_confirmation" placeholder="Nhập lại mật khẩu mới"/>
+          </div>
+        </div>
 
         <div ng-model="ProfileCtrl.notiMsg" ng-if="ProfileCtrl.notiMsg != null" class="alert alert-success">
           {{ ProfileCtrl.notiMsg }}
