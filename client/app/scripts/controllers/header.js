@@ -8,9 +8,15 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('HeaderCtrl', function($uibModal, headerService, userService, $window) {
+  .controller('HeaderCtrl', function($uibModal, headerService, userService, $window, $rootScope) {
     this.info = headerService;
-    this.user = userService;
+    this.loadProfile = function() {
+      userService.getProfile().then(function(d) {
+        this.user = d.data;
+      }.bind(this));
+    }.bind(this);
+
+    this.loadProfile();
 
     this.openLogin = function() {
       $uibModal.open({
@@ -22,6 +28,17 @@ angular.module('clientApp')
     this.logout = function() {
       localStorage.removeItem('teachyToken');
       $window.location.reload();
-    }
+    };
+
+    this.shortUsername = function() {
+      var name = this.user.name;
+      if (name.length <= 10) return name;
+      name = name.substr(0, 10) + "...";
+      return name;
+    }.bind(this);
+
+    $rootScope.$on('reloadHeader', function() {
+      this.loadProfile();
+    }.bind(this));
   });
 

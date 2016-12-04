@@ -4,14 +4,10 @@
   <div class="row">
     <div class="col-md-3">
       <div class="text-center">
-        <!--Anh vua upload-->
-        <img ng-if="thumbnail.dataUrl != 'default'" ng-src="{{ thumbnail.dataUrl }}" width ="200" height="200" class="img-circle">
-        <!--Anh tu tren server-->
-        <img ng-if="thumbnail.dataUrl == 'default'"ng-src="images/img/01.jpg" width ="200" height="200" class="img-circle">
-        <h6>Tải một ảnh mới...</h6>
+        <img ng-if="ProfileCtrl.user" ng-src="{{ ProfileCtrl.user.avatar }}" width ="200" height="200" class="img-circle">
 
         <label class="btn">
-          <span class="fa fa-upload"></span>&nbsp Upload
+          <span class="fa fa-upload"></span>&nbsp Tải ảnh
           <input type="file" name="file" onchange="angular.element(this).scope().photoChanged(this.files)" style="display: none;" />
 
         </label>
@@ -21,18 +17,53 @@
     <div class="col-md-9 personal-info">
       <h3>Thông tin cá nhân</h3>
 
-      <form class="form-horizontal" role="form">
-        <div ng-repeat="(key,obj) in ProfileCtrl.details track by $index" class="form-group">
-          <label class="col-lg-3 control-label">{{key}}: </label>
+      <form class="form-horizontal" role="form" ng-submit="ProfileCtrl.submit()">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Tên người dùng: </label>
           <div class="col-lg-8">
-            <input class="form-control" type="text" ng-model="obj">
+            <input class="form-control" readonly type="text" ng-model="ProfileCtrl.user.username"/>
           </div>
         </div>
         <div class="form-group">
+          <label class="col-lg-3 control-label">Tên: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" ng-model="ProfileCtrl.user.name"/>
+            <p ng-repeat="error in ProfileCtrl.errorData.name" ng-if="ProfileCtrl.errorData != null" class="error-msg">
+              {{ error }}
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" ng-model="ProfileCtrl.user.email"/>
+            <p ng-repeat="error in ProfileCtrl.errorData.email" ng-if="ProfileCtrl.errorData != null" class="error-msg">
+              {{ error }}
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Mã sinh viên: </label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" ng-model="ProfileCtrl.user.code"/>
+            <p ng-repeat="error in ProfileCtrl.errorData.code" ng-if="ProfileCtrl.errorData != null" class="error-msg">
+              {{ error }}
+            </p>
+          </div>
+        </div>
+
+        <div ng-model="ProfileCtrl.notiMsg" ng-if="ProfileCtrl.notiMsg != null" class="alert alert-success">
+          {{ ProfileCtrl.notiMsg }}
+        </div>
+        <div ng-model="ProfileCtrl.errorMsg" ng-if="ProfileCtrl.errorMsg != null" class="alert alert-danger">
+          {{ ProfileCtrl.errorMsg }}
+        </div>
+
+        <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input type="button" class="btn btn-default" value="Save Changes">
-            <input type="reset" class="btn btn-default" value="Cancel">
+            <input type="submit" class="btn btn-default" value="Cập nhật">
+            <a href class="btn btn-default" ng-click="ProfileCtrl.reset()">Hủy</a>
           </div>
         </div>
       </form>

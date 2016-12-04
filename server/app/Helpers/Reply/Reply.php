@@ -11,6 +11,7 @@ class Reply
         'get_subjects_success' => 'Get subjects list successfully',
         'get_subject_success' => 'Get subject successfully',
         'get_criteria_success' => 'Get criteria successfully',
+        'get_profile_success' => 'Get user profile successfully',
         'invalid_username' => 'Tên người dùng không chính xác',
         'incorrect_password' => 'Mật khẩu không chính xác',
         'invalid_credentials' => 'Invalid credentials',

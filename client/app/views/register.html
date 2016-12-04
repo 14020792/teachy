@@ -4,28 +4,46 @@
     <form ng-submit="ModalInstanceCtrl.register()">
       <label for="username" class="cols-sm-2">Tên đăng nhập</label>
       <input type="text" required ng-model="ModalInstanceCtrl.registerData.username" id="username" placeholder="Nhập tên đăng nhập">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.username">
+        {{ error }}
+      </p>
 
       <label for="password" class="cols-sm-2">Mật khẩu</label>
       <input type="password" required ng-model="ModalInstanceCtrl.registerData.password" id="password" placeholder="Nhập mật khẩu">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.password">
+        {{ error }}
+      </p>
 
       <label for="password_confirmation" class="cols-sm-2">Xác nhận mật khẩu</label>
       <input type="password" required ng-model="ModalInstanceCtrl.registerData.password_confirmation" id="password_confirmation" placeholder="Nhập mật khẩu">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.password_confirmation">
+        {{ error }}
+      </p>
 
       <label for="name" class="cols-sm-2">Tên người dùng</label>
       <input type="text" required ng-model="ModalInstanceCtrl.registerData.name" id="name" placeholder="Nhập tên người dùng">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.name">
+        {{ error }}
+      </p>
 
       <label for="email" class="cols-sm-2">Email</label>
       <input type="text" required ng-model="ModalInstanceCtrl.registerData.email" id="email" placeholder="Nhập email">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.email">
+        {{ error }}
+      </p>
 
       <label for="code" class="cols-sm-2">Mã sinh viên</label>
       <input type="text" required ng-model="ModalInstanceCtrl.registerData.code" id="code" placeholder="Nhập mã sinh viên">
+      <p class="error-msg" ng-if="ModalInstanceCtrl.errorData != null" ng-repeat="error in ModalInstanceCtrl.errorData.code">
+        {{ error }}
+      </p>
 
       <div ng-model="ModalInstanceCtrl.notiMsg" ng-if="ModalInstanceCtrl.notiMsg != null" class="alert alert-success">
         {{ ModalInstanceCtrl.notiMsg }}
       </div>
 
-      <div ng-repeat="error in ModalInstanceCtrl.errorMsg" ng-if="ModalInstanceCtrl.errorMsg != null" class="alert alert-danger">
-        {{ error }}
+      <div ng-model="ModalInstanceCtrl.errorMsg" ng-if="ModalInstanceCtrl.errorMsg != null" class="alert alert-danger">
+        {{ ModalInstanceCtrl.errorMsg }}
       </div>
       <input type="submit" name="login" class="login loginmodal-submit" value="Đăng kí">
     </form>

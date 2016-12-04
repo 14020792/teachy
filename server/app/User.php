@@ -30,4 +30,9 @@ class User extends Authenticatable
     public function assessments() {
         return $this->hasMany(Assessment::class, 'user_id');
     }
+
+    public function getAvatarAttribute($value) {
+        if (!$value) return url('/img/users/0/00.png');
+        return url($value);
+    }
 }

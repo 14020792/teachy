@@ -62,12 +62,6 @@ angular.module('clientApp')
       }
     }.bind(this);
 
-    this.randomRating = function() {
-      for (var i in this.criteria) {
-        this.rating.assessments[this.criteria[i].id] = Math.floor(Math.random() * 5) + 1;
-      }
-    }.bind(this);
-
     this.submit = function() {
       ratingService.submit(this.rating).then(function(d) {
         if (d.status == 0) {

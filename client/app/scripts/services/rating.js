@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .factory('ratingService', ['$http', 'config', function ($http, config) {
-    var ratingService = [];
+    var ratingService = {};
 
     ratingService.load = function() {
       return $http.get(config.serverUrl + "/assessments")

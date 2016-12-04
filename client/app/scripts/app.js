@@ -73,7 +73,7 @@ var app = angular.module('clientApp', [
     authManager.checkAuthOnRefresh();
     authManager.redirectWhenUnauthenticated();
   })
-  .directive('starRating',starRating);
+  .directive('starRating', starRating);
 
 function starRating() {
   return {

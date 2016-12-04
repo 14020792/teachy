@@ -307,3 +307,8 @@ img:hover {
   padding: 10px;
   /*padding-bottom: 0px;*/
 }
+
+.error-msg {
+  color: red;
+  font-size: 80%
+}

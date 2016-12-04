@@ -24,6 +24,7 @@ angular.module('clientApp')
 
       this.errorMsg = null;
       this.notiMsg = null;
+      this.errorData = null;
 
       this.openLogin = function() {
         $uibModalInstance.dismiss();
@@ -61,17 +62,12 @@ angular.module('clientApp')
         $http.post(config.serverUrl + "/register", this.registerData)
           .then(function success(response) {
             this.errorMsg = null;
+            this.errorData = null;
             this.notiMsg = response.data.msg;
           }.bind(this), function error(response) {
             this.notiMsg = null;
-            this.errorMsg = [];
-            for (var k in response.data.data) {
-              var er = response.data.data[k];
-              console.log(er);
-              for (var e in er) {
-                this.errorMsg.push(er[e]);
-              }
-            }
+            this.errorMsg = response.data.msg;
+            this.errorData = response.data.data;
           }.bind(this))
       }.bind(this);
     }]);

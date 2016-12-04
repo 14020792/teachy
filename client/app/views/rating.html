@@ -25,6 +25,20 @@
           <h3 class="panel-title">Mẫu đánh giá</h3>
         </div>
         <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-3">
+              <img class="img-thumbnail img-circle" ng-src="{{RatingCtrl.subject.instructors[RatingCtrl.selectedInstructor].avatar}}">
+            </div>
+            <div class="col-xs-9">
+              <h1 style="margin-top: 0px; font-weight:400">
+                {{RatingCtrl.subject.instructors[RatingCtrl.selectedInstructor].name}}
+              </h1>
+              <p>Mã giáo viên : {{RatingCtrl.subject.instructors[RatingCtrl.selectedInstructor].code}}</p>
+              <p>Email : {{RatingCtrl.subject.instructors[RatingCtrl.selectedInstructor].email}}</p>
+              <p>Thông tin : {{RatingCtrl.subject.instructors[RatingCtrl.selectedInstructor].info}}</p>
+            </div>
+          </div>
+          <hr/>
           <div class="col-xs-12" ng-repeat="criterion in RatingCtrl.criteria">
             <h4>{{criterion.text}}</h4>
             <div ng-if="RatingCtrl.rating.assessments[criterion.id] != null" star-rating ng-model="RatingCtrl.rating.assessments[criterion.id]" max="5"></div>
@@ -34,9 +48,6 @@
           <div ng-if="RatingCtrl.notiMsg != null" class="alert alert-success">
             {{ RatingCtrl.notiMsg }}
           </div>
-          <a href ng-click="RatingCtrl.randomRating()" style = "margin:40px">
-            <i class="ace-icon fa fa-random"></i>&nbsp;Ngẫu nhiên
-          </a>
           <button type="submit" class="btn btn-success btn-submit">
             <i class="ace-icon fa fa-check"></i>&nbsp;Đánh giá
           </button>
