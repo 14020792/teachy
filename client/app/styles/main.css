@@ -205,6 +205,8 @@ img:hover {
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none;
     box-shadow: none;
+    background-color: #74cfae;
+    color: white;
 }
 
 /*User info navbar*/
@@ -301,10 +303,10 @@ img:hover {
   font-size: large;
 }
 .notice-success {
-  border-color: #80D651;
+  border-color: #74cfae;
 }
 .notice-success>strong {
-  color: #80D651;
+  color: #74cfae;
 }
 .notice-info {
   border-color: #45ABCD;
