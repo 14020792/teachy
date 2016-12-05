@@ -59,5 +59,17 @@ CREATE TABLE IF NOT EXISTS `assessment`(
 	FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
 ) ENGINE=InnoDB CHARACTER SET=utf8;
 
+CREATE TABLE IF NOT EXISTS `comment`(
+        id int unsigned    PRIMARY KEY AUTO_INCREMENT,
+        ins_sub_id int unsigned NOT NULL,
+        user_id int unsigned NOT NULL,
+        content text DEFAULT '',
+        created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at datetime,
+        FOREIGN KEY (ins_sub_id) REFERENCES `instructor_subject`(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE CASCADE
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+
 SET FOREIGN_KEY_CHECKS=1;
 

@@ -12,11 +12,14 @@ angular.module('clientApp')
     this.info = headerService;
     this.loadProfile = function() {
       userService.getProfile().then(function(d) {
-        this.user = d.data;
+        if (d.status == 1) this.user = d.data;
+        else {
+          this.logout();
+        }
       }.bind(this));
     }.bind(this);
 
-    this.loadProfile();
+    if (localStorage.getItem('teachyToken')) this.loadProfile();
 
     this.openLogin = function() {
       $uibModal.open({

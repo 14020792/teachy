@@ -70,4 +70,6 @@ angular.module('clientApp')
             this.errorData = response.data.data;
           }.bind(this))
       }.bind(this);
+
+      this.showPassword = false;
     }]);

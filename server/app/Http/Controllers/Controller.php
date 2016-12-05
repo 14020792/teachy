@@ -109,6 +109,14 @@ class Controller extends BaseController
      *             type="string",
      *             default="[]",
      *         )
+     *     ),
+     *     @SWG\Definition(
+     *         definition="CommentStore",
+     *         @SWG\Property(
+     *             property="content",
+     *             type="string",
+     *             default="",
+     *         )
      *     )
      * )
      */

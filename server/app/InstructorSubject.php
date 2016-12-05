@@ -19,4 +19,8 @@ class InstructorSubject extends Model
     public function assessments() {
         return $this->hasMany(Assessment::class, 'ins_sub_id');
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'ins_sub_id');
+    }
 }

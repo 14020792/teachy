@@ -1,8 +1,5 @@
 /* FONTS */
 
-
-@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,700,900);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /* OVERALL ASPECT */
@@ -10,6 +7,7 @@
 html {
   overflow-y: scroll;
 }
+/*----------*/
 
 body {
     background-color: #f2f2f2;
@@ -20,27 +18,23 @@ body {
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
-
-    /*margin-top: 70px;*/
 }
+
+/*Effect cho panl*/
 .panel{
   transition: all linear 0.5s;
 }
 .panel.ng-hide{
   opacity: 0;
 }
+/*----------*/
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto";
     font-weight: 300;
-    /*color: #333;*/
 }
-/* Paragraph & Typographic */
-/*p {*/
-    /*line-height: 28px;*/
-    /*margin-bottom: 25px;*/
-/*}*/
+/*----------*/
 
 .centered {
     text-align: center;
@@ -52,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Links */
 a {
-    color: #f85c37;
+    color: #74cfae;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -64,7 +58,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #7b7b7b;
+    color: #74cfae;
     text-decoration: none;
     outline: 0;
 }
@@ -204,103 +198,14 @@ img:hover {
   display: block;
 }
 
-.btn-login {
-  border: none;
-}
-
+/*Button general*/
 .btn:focus,.btn:active:focus,.btn.active:focus,
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none;
     box-shadow: none;
 }
 
-/****** LOGIN MODAL ******/
-.loginmodal-container {
-  padding: 30px;
-  max-width: 350px;
-  width: 100% !important;
-  background-color: #F7F7F7;
-  margin: 0 auto;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  font-family: roboto;
-}
-
-.loginmodal-container h1 {
-  text-align: center;
-  font-size: 1.8em;
-  font-family: roboto;
-}
-
-.loginmodal-container input[type=submit] {
-  width: 100%;
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.loginmodal-container input[type=text], input[type=password] {
-  height: 44px;
-  font-size: 16px;
-  width: 100%;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  padding: 0 8px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
-.loginmodal-container input[type=text]:hover, input[type=password]:hover {
-  border: 1px solid #b9b9b9;
-  border-top: 1px solid #a0a0a0;
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.loginmodal {
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
-  padding: 0 8px;
-}
-
-.loginmodal-submit {
-  border: 0px;
-  color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1);
-  background-color: #4d90fe;
-  padding: 17px 0px;
-  font-family: roboto;
-  font-size: 14px;
-}
-
-.loginmodal-submit:hover {
-  border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
-}
-
-.loginmodal-container a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 400;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.6;
-  transition: opacity ease 0.5s;
-}
-
-.login-help{
-  font-size: 12px;
-}
-
+/*User info navbar*/
 .navbar-login
 {
   width: 300px;
@@ -312,3 +217,202 @@ img:hover {
   color: red;
   font-size: 80%
 }
+
+/*Login modal*/
+#login {
+  padding-top: 20px
+}
+#login .form-wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+#login h1 {
+  color: #74cfae;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+#login .form-control {
+  margin-bottom: 25px;
+}
+#login .checkbox {
+  margin-bottom: 20px;
+  position: relative;
+}
+#login .checkbox.show:before {
+  content: '\e013';
+  color: #74cfae;
+  font-size: 17px;
+  margin: 1px 0 0 3px;
+  position: absolute;
+  pointer-events: none;
+  font-family: 'Glyphicons Halflings';
+}
+#login .checkbox .character-checkbox {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  display: inline-block;
+}
+#login .checkbox .label {
+  color: #6d6d6d;
+  font-size: 13px;
+  font-weight: normal;
+}
+#login .btn.btn-custom {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  color: #212121;
+}
+.btn-custom {
+  color: #fff;
+  background-color: #74cfae;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+  color: #fff;
+}
+
+/*Alert design*/
+.notice {
+  padding: 15px;
+  background-color: #f2f2f2;
+  border-left: 6px solid #7f7f84;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+  box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.notice-sm {
+  padding: 10px;
+  font-size: 80%;
+}
+.notice-lg {
+  padding: 35px;
+  font-size: large;
+}
+.notice-success {
+  border-color: #80D651;
+}
+.notice-success>strong {
+  color: #80D651;
+}
+.notice-info {
+  border-color: #45ABCD;
+}
+.notice-info>strong {
+  color: #45ABCD;
+}
+.notice-warning {
+  border-color: #FEAF20;
+}
+.notice-warning>strong {
+  color: #FEAF20;
+}
+.notice-danger {
+  border-color: #d73814;
+}
+.notice-danger>strong {
+  color: #d73814;
+}
+/*End Alert design*/
+
+
+/*
+    Image credits:
+    uifaces.com (http://uifaces.com/authorized)
+*/
+
+.login,
+.logout {
+  position: absolute;
+  top: -3px;
+  right: 0;
+}
+.page-header { position: relative; }
+.reviews {
+  color: #555;
+  font-weight: bold;
+  margin: 10px auto 20px;
+}
+.notes {
+  color: #999;
+  font-size: 12px;
+}
+.media .media-object { max-width: 120px; }
+.media-body { position: relative; }
+.media-date {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before {
+  content: '.';
+  margin-left: -2px;
+  margin-right: 2px;
+}
+.media-comment { margin-bottom: 20px; }
+.media-replied { margin: 0 0 20px 50px; }
+.media-replied .media-heading { padding-left: 6px; }
+
+.btn-circle {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+.btn-circle span { padding-right: 6px; }
+.embed-responsive { margin-bottom: 20px; }
+.tab-content {
+  padding: 50px 15px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.custom-input-file {
+  overflow: hidden;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: #eee url('https://s3.amazonaws.com/uifaces/faces/twitter/walterstephanie/128.jpg');
+  background-size: 120px;
+  border-radius: 120px;
+}
+input[type="file"]{
+  z-index: 999;
+  line-height: 0;
+  font-size: 0;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+  margin: 0;
+  padding:0;
+  left:0;
+}
+.uploadPhoto {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  display: none;
+  width: 50%;
+  height: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  background-color: rgba(0,0,0,.3);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.custom-input-file:hover .uploadPhoto { display: block; }
+
