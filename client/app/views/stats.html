@@ -89,12 +89,12 @@
                     <div class="form-group">
                       <label class="col-xs-2 control-label">Viết bình luận</label>
                       <div class="col-xs-10">
-                        <textarea required class="form-control" name="addComment" rows="5" ng-model="StatsCtrl.comment"></textarea>
+                        <textarea class="form-control" name="addComment" rows="5" ng-model="StatsCtrl.comment"></textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
-                        <button ng-click="StatsCtrl.postComment()" class="btn btn-circle text-uppercase">
+                        <button ng-disabled="!StatsCtrl.comment" ng-click="StatsCtrl.postComment()" class="btn btn-circle text-uppercase">
                           <span class="glyphicon glyphicon-send"></span>Gửi bình luận
                         </button>
                       </div>

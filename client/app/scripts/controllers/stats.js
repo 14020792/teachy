@@ -31,6 +31,9 @@ angular.module('clientApp')
 
     this.setInstructor = function(index){
       this.selectedInstructor = index;
+      this.lastId = -1;
+      this.commentList = [];
+      this.comment = "";
       this.loadMoreComments();
     }.bind(this);
 
@@ -61,6 +64,7 @@ angular.module('clientApp')
         .then(function(d) {
           this.comment = "";
           this.commentList.splice(0, 0, d.data);
+          this.lastId = this.commentList[this.commentList.length-1].id;
         }.bind(this));
     }.bind(this);
 
@@ -69,7 +73,7 @@ angular.module('clientApp')
       commentService.load(classId, this.lastId)
         .then(function(d) {
           this.commentList = this.commentList.concat(d);
-          if (d.length > 0) this.lastId = d[d.length-1].id;
+          if (this.commentList.length > 0) this.lastId = this.commentList[this.commentList.length-1].id;
         }.bind(this));
     }.bind(this);
 
