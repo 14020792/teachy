@@ -19,7 +19,7 @@ angular.module('clientApp')
       }.bind(this));
     }.bind(this);
 
-    this.loadProfile();
+    if (localStorage.getItem('teachyToken')) this.loadProfile();
 
     this.openLogin = function() {
       $uibModal.open({
