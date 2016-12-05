@@ -5,7 +5,7 @@
     <div class="col-md-3">
       <div class="text-center">
         <img ng-if="ProfileCtrl.user" ng-src="{{ ProfileCtrl.user.avatar }}" width ="200" height="200" class="img-circle">
-
+        <hr>
         <label class="btn">
           <span class="fa fa-upload"></span>&nbsp Tải ảnh
           <input type="file" name="file" onchange="angular.element(this).scope().photoChanged(this.files)" style="display: none;" />
@@ -69,10 +69,10 @@
           </div>
         </div>
 
-        <div ng-model="ProfileCtrl.notiMsg" ng-if="ProfileCtrl.notiMsg != null" class="alert alert-success">
+        <div ng-model="ProfileCtrl.notiMsg" ng-if="ProfileCtrl.notiMsg != null" class="notice notice-success">
           {{ ProfileCtrl.notiMsg }}
         </div>
-        <div ng-model="ProfileCtrl.errorMsg" ng-if="ProfileCtrl.errorMsg != null" class="alert alert-danger">
+        <div ng-model="ProfileCtrl.errorMsg" ng-if="ProfileCtrl.errorMsg != null" class="notice notice-danger">
           {{ ProfileCtrl.errorMsg }}
         </div>
 

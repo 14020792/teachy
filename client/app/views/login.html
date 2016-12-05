@@ -1,22 +1,20 @@
-<div class="modal-dialog">
-  <div class="loginmodal-container">
-    <h1>ĐĂNG NHẬP</h1><br>
-    <form ng-submit="ModalInstanceCtrl.login()">
-      <input type="text" ng-model="ModalInstanceCtrl.username" name="username" placeholder="Tên đăng nhập">
-      <input type="password" ng-model="ModalInstanceCtrl.password" name="password" placeholder="Mật khẩu">
-      <div ng-if="ModalInstanceCtrl.errorMsg != null" class="alert alert-danger">
+<div class="modal-dialog" id="login">
+  <div class="form-wrap">
+    <h1>Đăng nhập bằng tài khoản của bạn</h1>
+    <hr>
+    <form role="form" id="login-form" ng-submit="ModalInstanceCtrl.login()">
+      <input class="form-control" type="text" ng-model="ModalInstanceCtrl.username" name="username" placeholder="Tên đăng nhập">
+      <input class="form-control" type="{{ModalInstanceCtrl.showPassword ? 'text':'password'}}" ng-model="ModalInstanceCtrl.password" name="password" placeholder="Mật khẩu">
+      <div class="checkbox"  ng-class = "{'show' : ModalInstanceCtrl.showPassword}">
+        <span class="character-checkbox" ng-click="ModalInstanceCtrl.showPassword = !ModalInstanceCtrl.showPassword"></span>
+        <span class="label">Show password</span>
+      </div>
+      <div ng-if="ModalInstanceCtrl.errorMsg != null" class="notice notice-danger">
         {{ ModalInstanceCtrl.errorMsg }}
       </div>
-      <input type="submit" name="login" class="login loginmodal-submit" value="Đăng nhập">
+      <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Đăng nhập">
+      <p>Chưa có tài khoản ? <a ng-click="ModalInstanceCtrl.openRegister()"><strong>Đăng kí</strong></a></p>
     </form>
-
-    <div class="login-help">
-      Chưa có tài khoản ? <a href ng-click="ModalInstanceCtrl.openRegister()">Đăng kí</a>
-    </div>
+    <hr>
   </div>
 </div>
-<!--
-<div class="modal-footer">
-  <button class="btn btn-default" ng-click="modalInstance.cancel()">Cancel</button>
-</div>
--->
