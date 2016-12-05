@@ -58,6 +58,59 @@
         </div>
       </div>
     </div>
+
+    <div class="container" ng-show="StatsCtrl.selectedInstructor != -1">
+      <div class="row">
+        <div class="page-header">
+          <h3 class="reviews">Bình luận</h3>
+        </div>
+        <div class="comment-tabs">
+          <div class="tab-content">
+            <div class="tab-pane active" id="comments-logout">
+              <!-- Add comment -->
+              <form ng-if="isAuthenticated" class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label class="col-xs-1 control-label">Viết bình luận</label>
+                  <div class="col-xs-8">
+                    <textarea required class="form-control" name="addComment" rows="5" ng-model="StatsCtrl.comment"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button ng-click="StatsCtrl.postComment()" class="btn btn-success btn-circle text-uppercase">
+                      <span class="glyphicon glyphicon-send"></span>Gửi bình luận
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- List comments -->
+              <ul class="media-list">
+                <li ng-repeat="comment in StatsCtrl.commentList" class="media">
+                  <a class="pull-left" href="#">
+                    <img class="media-object img-circle" ng-src="{{comment.user.avatar}}">
+                  </a>
+                  <div class="media-body" style="width:500px">
+                    <div class="well well-lg">
+                      <h4 class="media-heading reviews">{{comment.user.name}}</h4>
+                      <p class="media-date reviews list-inline">
+                        {{comment.created_at}}
+                      </p>
+                      <p class="media-comment">
+                        {{comment.content}}
+                      </p>
+                      <a ng-click="StatsCtrl.reply(comment.user.username)" class="btn btn-info btn-circle text-uppercase" href id="reply"><span class="glyphicon glyphicon-share-alt"></span> Trả lời</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <a href ng-click="StatsCtrl.loadMoreComments()">Xem thêm bình luận</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
 </div>
