@@ -1,3 +1,4 @@
+<div class="container">
 <div class="panel panel-default" ng-show="StatsCtrl.selectedInstructor != -1">
   <div class="panel-heading">
     <h4 class="panel-title">
@@ -95,90 +96,4 @@
     </div>
   </div>
 </div>
-  <!--<h1>Chỉnh sửa hồ sơ</h1>-->
-  <!--<hr>-->
-  <!--<div class="row">-->
-    <!--<div class="col-md-3">-->
-      <!--<div class="text-center">-->
-        <!--<img ng-if="ProfileCtrl.user" ng-src="{{ ProfileCtrl.user.avatar }}" width ="200" height="200" class="img-circle">-->
-        <!--<hr>-->
-        <!--<label class="btn">-->
-          <!--<span class="fa fa-upload"></span>&nbsp Tải ảnh-->
-          <!--<input type="file" name="file" onchange="angular.element(this).scope().photoChanged(this.files)" style="display: none;" />-->
-
-        <!--</label>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="col-md-9 personal-info">-->
-      <!--<h3>Thông tin cá nhân</h3>-->
-
-      <!--<form class="form-horizontal" role="form" ng-submit="ProfileCtrl.submit()">-->
-        <!--<div class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Tên người dùng: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" readonly type="text" ng-model="ProfileCtrl.user.username"/>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Tên: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" type="text" ng-model="ProfileCtrl.user.name"/>-->
-            <!--<p ng-repeat="error in ProfileCtrl.errorData.name" ng-if="ProfileCtrl.errorData != null" class="error-msg">-->
-              <!--{{ error }}-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Email: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" type="text" ng-model="ProfileCtrl.user.email"/>-->
-            <!--<p ng-repeat="error in ProfileCtrl.errorData.email" ng-if="ProfileCtrl.errorData != null" class="error-msg">-->
-              <!--{{ error }}-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Mã sinh viên: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" type="text" ng-model="ProfileCtrl.user.code"/>-->
-            <!--<p ng-repeat="error in ProfileCtrl.errorData.code" ng-if="ProfileCtrl.errorData != null" class="error-msg">-->
-              <!--{{ error }}-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Mật khẩu mới: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" type="password"-->
-                   <!--ng-model="ProfileCtrl.user.password" placeholder="Để trống nếu không cập nhật"/>-->
-            <!--<p ng-repeat="error in ProfileCtrl.errorData.password" ng-if="ProfileCtrl.errorData != null" class="error-msg">-->
-              <!--{{ error }}-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div ng-if="ProfileCtrl.user.password" class="form-group">-->
-          <!--<label class="col-lg-3 control-label">Xác nhận mật khẩu mới: </label>-->
-          <!--<div class="col-lg-8">-->
-            <!--<input class="form-control" type="password"-->
-                   <!--ng-model="ProfileCtrl.user.password_confirmation" placeholder="Nhập lại mật khẩu mới"/>-->
-          <!--</div>-->
-        <!--</div>-->
-
-        <!--<div ng-model="ProfileCtrl.notiMsg" ng-if="ProfileCtrl.notiMsg != null" class="notice notice-success">-->
-          <!--{{ ProfileCtrl.notiMsg }}-->
-        <!--</div>-->
-        <!--<div ng-model="ProfileCtrl.errorMsg" ng-if="ProfileCtrl.errorMsg != null" class="notice notice-danger">-->
-          <!--{{ ProfileCtrl.errorMsg }}-->
-        <!--</div>-->
-
-        <!--<div class="form-group">-->
-          <!--<label class="col-md-3 control-label"></label>-->
-          <!--<div class="col-md-8">-->
-            <!--<input type="submit" class="btn" value="Cập nhật">-->
-            <!--<a href class="btn" ng-click="ProfileCtrl.reset()">Hủy</a>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</form>-->
-    <!--</div>-->
-  <!--</div>-->
+</div>

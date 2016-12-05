@@ -405,3 +405,85 @@ input[type="file"]{
 }
 .custom-input-file:hover .uploadPhoto { display: block; }
 
+/*Landing Shit*/
+/* hello */
+#hello {
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+#hello h1 {
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #74cfae;
+}
+
+#hello h2 {
+  color: #c0c0c0;
+  font-weight: 400;
+}
+
+/* Green */
+#green {
+  background-color: #74cfae;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 0px;
+}
+
+#green h3,
+#skills h3{
+  color: white;
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+#green p {
+  color: white;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+/* Skills  and team*/
+#team h3{
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+#team h4{
+  font-weight: 700;
+  margin-top:25px;
+}
+#skills {
+  /*background-color: #4e4e4e;*/
+  background-color: #4e4e4e;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+
+#skills h3 {
+  color: white;
+  font-size:40px;
+}
+
+#skills p {
+  color: white;
+  font-weight: 400;
+}
+
+/* Footer */
+#f {
+  padding-top: 20px;
+  background-color: #74cfae;
+}
+
+#f p {
+  color: white;
+  text-align: right;
+  font-weight: 400;
+}
