@@ -118,7 +118,7 @@
                           <p class="media-comment">
                             {{comment.content}}
                           </p>
-                          <a ng-click="StatsCtrl.reply(comment.user.username)" class="btn btn-circle text-uppercase" href id="reply"><span class="glyphicon glyphicon-share-alt"></span> Trả lời</a>
+                          <a ng-click="StatsCtrl.reply(comment.user.username)" ng-if="isAuthenticated" class="btn btn-circle text-uppercase" href id="reply"><span class="glyphicon glyphicon-share-alt"></span> Trả lời</a>
                         </div>
                       </div>
                     </li>
@@ -135,7 +135,7 @@
 
 
 
+    </div>
   </div>
-
 </div>
 </div>

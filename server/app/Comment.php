@@ -23,6 +23,13 @@ class Comment extends Model
     }
 
     public function getCreatedAtAttribute($value) {
-        return date('H:i:s d-m-Y', strtotime($value));
+        $value = strtotime($value);
+        $period = time() - $value;
+
+        if ($period < 60) return "vài giây trước";
+        if ($period < 3600) return "khoảng " . intval($period / 60) . " phút trước";
+        if ($period < 24 * 3600) return "khoảng " . intval($period / 3600) . " giờ trước";
+
+        return date('H:i:s d-m-Y', $value);
     }
 }
