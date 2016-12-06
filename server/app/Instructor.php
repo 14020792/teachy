@@ -37,7 +37,7 @@ class Instructor extends Model
 
     public function getInfoAttribute($value) {
         $faker = \Faker\Factory::create();
-        if (!$value) return $faker->sentence;
+        if (!$value) return $faker->paragraph(5);
         return $value;
     }
 }
